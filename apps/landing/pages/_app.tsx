@@ -1,5 +1,6 @@
 import { Layout } from "ui"
 import { AppProps } from "next/app"
+import { appWithTranslation } from "next-i18next"
 
 const App = ({ Component, pageProps }: AppProps) => (
   <Layout>
@@ -9,4 +10,4 @@ const App = ({ Component, pageProps }: AppProps) => (
   </Layout>
 )
 
-export default App
+export default appWithTranslation(App)
