@@ -1,7 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const Index = () => {
-  return <></>
+  return <>LAYOUT</>
 }
 
 export default Index
