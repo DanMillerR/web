@@ -14,8 +14,15 @@ const Index = () => {
 
     return (
         <>
-            <Box>
-                <Typography variant="h1">{t('mainTitle')}</Typography>
+            <Box
+                sx={{
+                    backgroundSize: 'cover',
+                    backgroundImage: "url('/pictures/paris.jpg')",
+                }}
+            >
+                <Typography color="#fff" variant="h1">
+                    {t('mainTitle')}
+                </Typography>
             </Box>
             <Box>
                 <Typography textAlign="center" variant="h3">
