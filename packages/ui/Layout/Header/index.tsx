@@ -1,15 +1,14 @@
-import { Box, Container, Typography } from '@mui/material'
-import { containerMaxWidth, styles } from 'cnfg'
+import { Typography } from '@mui/material'
+import { styles } from 'cnfg'
 import { useTranslation } from 'next-i18next'
+import { BlockCover } from '../..'
 
 export const Header = () => {
     const { t } = useTranslation('ui', { keyPrefix: 'header' })
 
     return (
-        <Box sx={styles.headerSx}>
-            <Container maxWidth={containerMaxWidth}>
-                <Typography>{t('title')}</Typography>
-            </Container>
-        </Box>
+        <BlockCover sx={styles.headerSx}>
+            <Typography>{t('title')}</Typography>
+        </BlockCover>
     )
 }

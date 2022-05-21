@@ -4,6 +4,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import { containerMaxWidth } from 'cnfg'
 import { Utils } from './Utils'
+import { BlockCover } from '..'
 
 export const Layout: FC = ({ children }) => (
     <Utils>
@@ -15,9 +16,7 @@ export const Layout: FC = ({ children }) => (
             }}
         >
             <Header />
-            <Box sx={{ flexGrow: 1 }}>
-                <Container maxWidth={containerMaxWidth}>{children}</Container>
-            </Box>
+            <BlockCover sx={{ flexGrow: 1 }}>{children}</BlockCover>
             <Footer />
         </Box>
     </Utils>
