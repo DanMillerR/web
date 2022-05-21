@@ -1,0 +1,14 @@
+{
+    "mainTitle": "$t(common:name) — your space, your ecosystem",
+    "productsTitle": "Our products",
+    "products": {
+        "landing": {
+            "title": "Landing",
+            "description": "This website. Shows all our products"
+        },
+        "accSys": {
+            "title": "Accounts System",
+            "description": "Websites (and system), that is used to manage your accounts and accounts preferences"
+        }
+    }
+}
