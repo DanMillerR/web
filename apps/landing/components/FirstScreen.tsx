@@ -7,6 +7,7 @@ export const FirstScreen = () => {
     return (
         <Box
             sx={{
+                p: 1,
                 backgroundSize: 'cover',
                 backgroundImage: "url('/pictures/paris.jpg')",
             }}
