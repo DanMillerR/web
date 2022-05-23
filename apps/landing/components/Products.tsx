@@ -12,7 +12,7 @@ export const Products = () => {
     } = t('products', { returnObjects: true })
 
     return (
-        <Box>
+        <Box sx={{ p: 1 }}>
             <Typography textAlign="center" variant="h3">
                 {t('productsTitle')}
             </Typography>
