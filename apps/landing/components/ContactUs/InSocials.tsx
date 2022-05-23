@@ -26,7 +26,7 @@ export const InSocials = () => {
 
     return (
         <>
-            <Typography textAlign="center" variant="subtitle1">
+            <Typography textAlign="center" variant="h5">
                 {t('inSocials')}
             </Typography>
             <Grid spacing={1} justifyContent="center" container>
