@@ -27,12 +27,12 @@ const EmailPresent = ({
 )
 
 export const ViaEmail = () => {
-    const { t } = useTranslation('landing', { keyPrefix: 'contactUs' })
+    const { t } = useTranslation('landing', { keyPrefix: 'contactUs.viaEmail' })
 
     return (
         <>
             <Typography textAlign="center" variant="h5">
-                {t('viaEmail.title')}
+                {t('title')}
             </Typography>
             <Box
                 sx={{
@@ -42,7 +42,7 @@ export const ViaEmail = () => {
                 }}
             >
                 {Object.entries(emails).map(([category, email]) => (
-                    <EmailPresent category={category} email={email} />
+                    <EmailPresent category={t(category)} email={email} />
                 ))}
             </Box>
         </>
