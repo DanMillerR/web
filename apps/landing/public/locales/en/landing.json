@@ -10,5 +10,16 @@
             "title": "Accounts System",
             "description": "Websites (and system), that is used to manage your accounts and accounts preferences"
         }
+    },
+    "contactUs": {
+        "title": "Contact us",
+        "inSocials": "In socials",
+        "viaEmail": {
+            "title": "Via email",
+            "help": "Help",
+            "partnership": "Partnership",
+            "suggestions": "Suggestions",
+            "other": "Other"
+        }
     }
 }
