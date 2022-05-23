@@ -7,16 +7,14 @@ const SocialNetworkLink = ({ text, href, Icon }: SocialNetworkProps) => {
         <Grid item>
             <Button
                 sx={{
-                    flexDirection: 'column',
-                    '& .text': {
-                        overflow: 'hidden',
-                        transition: '100ms linear',
-                        height: 0,
-                    },
-                    '&:hover .text': { height: '1em' },
+                    // todo?: add transition
+                    '& .icon': { display: 'block' },
+                    '& .text': { display: 'none' },
+                    '&:hover .icon': { display: 'none' },
+                    '&:hover .text': { display: 'block' },
                 }}
             >
-                <Icon />
+                <Icon className="icon" />
                 <Typography className="text">{text}</Typography>
             </Button>
         </Grid>
