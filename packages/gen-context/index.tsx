@@ -1,4 +1,11 @@
-import { Provider, ComponentType, Context, PropsWithChildren } from 'react'
+import {
+    Provider,
+    ComponentType,
+    Context,
+    PropsWithChildren,
+    useContext,
+    createContext,
+} from 'react'
 
 type PropsWithRealProviders<T, P> = Record<'RealProvider', Provider<T>> & P
 
@@ -17,5 +24,16 @@ export const genContext = <T, P>(
     getCustomUseContext: GetCustomUseContext<T>,
     defaultValue: T
 ): [ReturnType<GetCustomUseContext<T>>, WrapperProvider<P>] => {
-    return []
+    const context = createContext(defaultValue)
+
+    const defaultMyUseContext = <ST extends T = T>() =>
+        useContext(context) as ST
+
+    const myUseContext = getCustomUseContext(context) || defaultMyUseContext
+
+    const WrapperProvider: WrapperProvider<P> = (p) => (
+        <CustomProvider {...p} RealProvider={context.Provider} />
+    )
+
+    return [myUseContext, WrapperProvider]
 }
