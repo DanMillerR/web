@@ -13,17 +13,17 @@ type CustomProvider<T, P> = ComponentType<
     PropsWithChildren<PropsWithRealProviders<T, P>>
 >
 
-type GetCustomUseContext<T> = (
+type GetCustomUseContext<T, CP> = (
     context: Context<T>
-) => <ST extends T = T>() => ST
+) => <ST extends T = T>(p: CP) => ST
 
 type WrapperProvider<P> = (p: PropsWithChildren<P>) => JSX.Element
 
-export const genContext = <T, P>(
+export const genContext = <T, P, CP>(
     CustomProvider: CustomProvider<T, P>,
-    getCustomUseContext: GetCustomUseContext<T>,
+    getCustomUseContext: GetCustomUseContext<T, CP>,
     defaultValue: T
-): [ReturnType<GetCustomUseContext<T>>, WrapperProvider<P>] => {
+): [ReturnType<GetCustomUseContext<T, CP>>, WrapperProvider<P>] => {
     const context = createContext(defaultValue)
 
     const defaultMyUseContext = <ST extends T = T>() =>
