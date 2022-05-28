@@ -1,14 +1,16 @@
 import { genContext } from 'gen-context'
 import { useContext } from 'react'
 
+type CP = {
+    power: number
+}
+
 const [useAlert, AlertProvider] = genContext<
     number,
     {
         phrase: 'HI' | 'BYE'
     },
-    {
-        power: number
-    }
+    CP
 >(
     ({ RealProvider, phrase, children }) => (
         <div style={{ background: phrase == 'BYE' ? '#f99' : '#99f' }}>
@@ -16,10 +18,10 @@ const [useAlert, AlertProvider] = genContext<
         </div>
     ),
     (context) =>
-        ({ power }) => {
+        <ST extends number = number>({ power }: CP) => {
             const val = useContext(context)
 
-            return val ** power
+            return (val ** power) as ST
         },
     10
 )
