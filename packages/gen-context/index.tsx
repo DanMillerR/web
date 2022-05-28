@@ -32,10 +32,7 @@ export const genContext = <T, P, CP>(
     const myUseContext = getCustomUseContext(context) || defaultMyUseContext
 
     const WrapperProvider: WrapperProvider<P> = (p) => (
-        <>
-            adf
-            <CustomProvider {...p} RealProvider={context.Provider} />
-        </>
+        <CustomProvider {...p} RealProvider={context.Provider} />
     )
 
     return [myUseContext, WrapperProvider]
