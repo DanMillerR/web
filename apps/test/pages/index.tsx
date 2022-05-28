@@ -21,14 +21,18 @@ const [useAlert, AlertProvider] = genContext<
 const A = () => {
     const value = useAlert()
 
-    return <h1>{value}</h1>
+    return <h1>A{value}</h1>
 }
 
 const Index = () => () =>
     (
-        <AlertProvider arg1={20}>
+        <>
+            dfasdf
             <A />
-        </AlertProvider>
+            <AlertProvider arg1={20}>
+                <A />
+            </AlertProvider>
+        </>
     )
 
 export default Index
