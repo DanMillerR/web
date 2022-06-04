@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "display": "Default",
+    "display": "Tsconfig",
     "compilerOptions": {
         "composite": false,
         "declaration": true,
@@ -14,7 +14,15 @@
         "noUnusedParameters": false,
         "preserveWatchOutput": true,
         "skipLibCheck": true,
-        "strict": true
+        "strict": true,
+        "target": "es5",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "noEmit": true,
+        "incremental": true,
+        "module": "esnext",
+        "resolveJsonModule": true,
+        "jsx": "preserve"
     },
     "exclude": ["node_modules"]
 }
