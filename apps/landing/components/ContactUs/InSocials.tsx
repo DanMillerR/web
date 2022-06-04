@@ -31,7 +31,7 @@ export const InSocials = () => {
             </Typography>
             <Grid spacing={1} justifyContent="center" container>
                 {socials.map((props) => (
-                    <SocialNetworkLink {...props} />
+                    <SocialNetworkLink key={props.href} {...props} />
                 ))}
             </Grid>
         </>

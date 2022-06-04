@@ -1,4 +1,4 @@
-import { Theme, useTheme, Box, Typography } from '@mui/material'
+import { useTheme, Box, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { InSocials } from './InSocials'
 import { ViaEmail } from './ViaEmail'

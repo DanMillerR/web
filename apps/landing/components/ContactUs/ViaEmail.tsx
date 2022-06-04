@@ -1,12 +1,5 @@
-import {
-    useTheme,
-    Box,
-    Button,
-    Grid,
-    IconButton,
-    Typography,
-} from '@mui/material'
-import { emails, SocialNetworkProps, socials } from 'cnfg'
+import { Box, Typography } from '@mui/material'
+import { emails } from 'cnfg'
 import { useTranslation } from 'next-i18next'
 
 const EmailPresent = ({
@@ -42,7 +35,11 @@ export const ViaEmail = () => {
                 }}
             >
                 {Object.entries(emails).map(([category, email]) => (
-                    <EmailPresent category={t(category)} email={email} />
+                    <EmailPresent
+                        key={category}
+                        category={t(category)}
+                        email={email}
+                    />
                 ))}
             </Box>
         </>
