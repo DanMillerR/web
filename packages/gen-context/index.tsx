@@ -26,14 +26,14 @@ export const genContext = <T, P, CP>(
 ): [ReturnType<GetCustomUseContext<T, CP>>, WrapperProvider<P>] => {
     const context = createContext(defaultValue)
 
-    const defaultMyUseContext = <ST extends T = T>() =>
+    const useContextDefaultHook = <ST extends T = T>() =>
         useContext(context) as ST
 
-    const myUseContext = getCustomUseContext(context) || defaultMyUseContext
+    const _useContext = getCustomUseContext(context) || useContextDefaultHook
 
     const WrapperProvider: WrapperProvider<P> = (p) => (
         <CustomProvider {...p} RealProvider={context.Provider} />
     )
 
-    return [myUseContext, WrapperProvider]
+    return [_useContext, WrapperProvider]
 }
