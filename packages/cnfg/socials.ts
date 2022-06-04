@@ -12,16 +12,16 @@ export const socials: SocialNetworkProps[] = [
     {
         text: 'VK',
         Icon: VK,
-        href: 'https//example.com',
+        href: 'https//example.com/1',
     },
     {
         text: 'reddit',
         Icon: Reddit,
-        href: 'https//example.com',
+        href: 'https//example.com/2',
     },
     {
         text: 'telegram',
         Icon: Telegram,
-        href: 'https//example.com',
+        href: 'https//example.com/3',
     },
 ]
