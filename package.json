@@ -9,7 +9,7 @@
     "scripts": {
         "build": "turbo run build",
         "dev": "turbo run dev --parallel",
-        "lint": "turbo run lint",
+        "lint": "yarn run eslint --ext .ts,.tsx .",
         "format": "prettier --write \"**/*.{ts,tsx,md,yaml,json,js}\""
     },
     "devDependencies": {
