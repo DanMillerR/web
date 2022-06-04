@@ -1,7 +1,9 @@
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
-import { FC } from 'react'
+import { PropsWithChildren } from 'react'
 
-export const Utils: FC = ({ children }) => (
+export const Utils = ({
+    children,
+}: PropsWithChildren<Record<never, never>>) => (
     <ThemeProvider theme={createTheme({})}>
         <CssBaseline enableColorScheme />
         {children}
