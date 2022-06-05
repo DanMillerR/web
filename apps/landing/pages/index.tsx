@@ -3,15 +3,13 @@ import { ContactUs } from '../components/ContactUs'
 import { FirstScreen } from '../components/FirstScreen'
 import { Products } from '../components/Products'
 
-const Index = () => {
-    return (
-        <>
-            <FirstScreen />
-            <Products />
-            <ContactUs />
-        </>
-    )
-}
+const Index = () => (
+    <>
+        <FirstScreen />
+        <Products />
+        <ContactUs />
+    </>
+)
 
 export default Index
 export const getStaticProps = async () => ({
