@@ -1,12 +1,18 @@
-import { Box, Container } from '@mui/material'
-import { FC } from 'react'
+import { Box } from '@mui/material'
+import { PropsWithChildren } from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { containerMaxWidth } from 'cnfg'
 import { Utils } from './Utils'
 import { BlockCover } from '..'
 
-export const Layout: FC = ({ children }) => (
+type Config = {
+    useBlockCover?: boolean
+}
+
+export const Layout = ({
+    children,
+    useBlockCover = false,
+}: PropsWithChildren<Config>) => (
     <Utils>
         <Box
             sx={{
@@ -16,7 +22,11 @@ export const Layout: FC = ({ children }) => (
             }}
         >
             <Header />
-            <BlockCover sx={{ flexGrow: 1 }}>{children}</BlockCover>
+            {useBlockCover ? (
+                <BlockCover sx={{ flexGrow: 1 }}>{children}</BlockCover>
+            ) : (
+                children
+            )}
             <Footer />
         </Box>
     </Utils>
