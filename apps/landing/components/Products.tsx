@@ -1,5 +1,6 @@
 import { Box, Card, Grid, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
+import { BlockCover } from 'ui'
 
 export const Products = () => {
     const { t } = useTranslation('landing')
@@ -12,7 +13,7 @@ export const Products = () => {
     } = t('products', { returnObjects: true })
 
     return (
-        <Box sx={{ p: 1 }}>
+        <BlockCover sx={{ p: 1 }}>
             <Typography textAlign="center" variant="h3">
                 {t('productsTitle')}
             </Typography>
@@ -30,6 +31,6 @@ export const Products = () => {
                     </Grid>
                 ))}
             </Grid>
-        </Box>
+        </BlockCover>
     )
 }
