@@ -8,5 +8,6 @@ export const styles = {
     footerSx: {
         background: ui.colors.bg[3],
         color: ui.colors.text[0],
+        P: 1,
     },
 }
