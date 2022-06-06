@@ -20,7 +20,7 @@ export const Products = () => {
             <Grid container spacing={2}>
                 {Object.values(products).map((product) => (
                     <Grid xs key={product.title} item>
-                        <Card>
+                        <Card sx={{ p: 1 }}>
                             <Typography variant="h4">
                                 {product.title}
                             </Typography>
