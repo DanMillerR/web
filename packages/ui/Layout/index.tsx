@@ -11,7 +11,7 @@ type Config = {
 
 export const Layout = ({
     children,
-    useBlockCover = false,
+    useBlockCover = true,
 }: PropsWithChildren<Config>) => (
     <Utils>
         <Box
