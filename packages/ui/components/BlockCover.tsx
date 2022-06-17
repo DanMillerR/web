@@ -1,5 +1,5 @@
 import { Box, BoxProps, Container, ContainerProps } from '@mui/material'
-import { containerMaxWidth } from 'cnfg'
+import { CONTAINER_MAX_WIDTH } from 'cnfg'
 
 export const BlockCover = ({
     children,
@@ -7,7 +7,7 @@ export const BlockCover = ({
     ...props
 }: BoxProps & { containerProps: ContainerProps }) => (
     <Box {...props}>
-        <Container {...containerProps} maxWidth={containerMaxWidth}>
+        <Container {...containerProps} maxWidth={CONTAINER_MAX_WIDTH}>
             {children}
         </Container>
     </Box>
