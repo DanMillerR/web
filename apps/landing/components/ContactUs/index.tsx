@@ -1,8 +1,8 @@
-import { useTheme, Box, Typography } from '@mui/material'
+import { useTheme, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { InSocials } from './InSocials'
 import { ViaEmail } from './ViaEmail'
-import{BlockCover}from'ui'
+import { BlockCover } from 'ui'
 
 export const ContactUs = () => {
     const { t } = useTranslation('landing', { keyPrefix: 'contactUs' })
