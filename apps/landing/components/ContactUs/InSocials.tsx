@@ -1,25 +1,26 @@
 import { Button, Grid, Typography } from '@mui/material'
 import { SocialNetworkProps, socials } from 'cnfg'
 import { useTranslation } from 'next-i18next'
+import { Link } from 'ui'
 
-const SocialNetworkLink = ({ text, href, Icon }: SocialNetworkProps) => {
-    return (
-        <Grid item>
-            <Button
-                sx={{
-                    // todo?: add transition
-                    '& .icon': { display: 'block' },
-                    '& .text': { display: 'none' },
-                    '&:hover .icon': { display: 'none' },
-                    '&:hover .text': { display: 'block' },
-                }}
-            >
-                <Icon className="icon" />
-                <Typography className="text">{text}</Typography>
-            </Button>
-        </Grid>
-    )
-}
+const SocialNetworkLink = ({ text, href, Icon }: SocialNetworkProps) => (
+    <Grid item>
+        <Button
+            href={href}
+            LinkComponent={Link}
+            sx={{
+                // todo?: add transition
+                '& .icon': { display: 'block' },
+                '& .text': { display: 'none' },
+                '&:hover .icon': { display: 'none' },
+                '&:hover .text': { display: 'block' },
+            }}
+        >
+            <Icon className="icon" />
+            <Typography className="text">{text}</Typography>
+        </Button>
+    </Grid>
+)
 
 export const InSocials = () => {
     const { t } = useTranslation('landing', { keyPrefix: 'contactUs' })
