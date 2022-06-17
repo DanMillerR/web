@@ -4,8 +4,6 @@ import { appWithTranslation } from 'next-i18next'
 
 const App = ({ Component, pageProps }: AppProps) => (
     <Layout useBlockCover={false}>
-        {/* todo */}
-        {/* @ts-ignore */}
         <Component {...pageProps} />
     </Layout>
 )
