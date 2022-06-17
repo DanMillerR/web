@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Typography } from '@mui/material'
+import { Card, Grid, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { BlockCover } from 'ui'
 
