@@ -5,7 +5,7 @@ export const BlockCover = ({
     children,
     containerProps,
     ...props
-}: BoxProps & { containerProps: ContainerProps }) => (
+}: BoxProps & { containerProps?: Omit<ContainerProps, 'maxWidth'> }) => (
     <Box {...props}>
         <Container {...containerProps} maxWidth={CONTAINER_MAX_WIDTH}>
             {children}
