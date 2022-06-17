@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { Utils } from './Utils'
-import { BlockCover } from '..'
+import { BlockCover } from '../..'
 
 type Config = {
     useBlockCover?: boolean

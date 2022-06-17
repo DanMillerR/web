@@ -1,6 +1,6 @@
 import { styles } from 'cnfg'
 import { useTranslation } from 'next-i18next'
-import { BlockCover } from '..'
+import { BlockCover } from '../..'
 import { Typography } from '@mui/material'
 
 export const Footer = () => {
