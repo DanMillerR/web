@@ -7,7 +7,7 @@ export const Footer = () => {
     const { t } = useTranslation('ui', { keyPrefix: 'footer' })
 
     return (
-        <BlockCover sx={styles.footerSx}>
+        <BlockCover containerProps={{ sx: { p: 4 } }} sx={styles.footerSx}>
             <Typography textAlign="center">{t('text')}</Typography>
         </BlockCover>
     )
