@@ -9,11 +9,12 @@ export const WithEmail = ({
     value: number
     index: number
 }) => {
-    const [{ email }, onInput] = useData('email', 'password')
+    const [{ email, password }, onInput] = useData('email', 'password')
 
     return (
         <TabPanel value={value} index={index}>
             <TextField value={email} onInput={onInput('email')} />
+            <TextField value={password} onInput={onInput('password')} />
         </TabPanel>
     )
 }
