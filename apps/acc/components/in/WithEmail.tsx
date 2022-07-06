@@ -1,6 +1,10 @@
 import { TabPanel } from 'ui'
 import { useData } from 'form'
-import { TextField } from '@mui/material'
+import { Button, TextField } from '@mui/material'
+import { useTranslation } from 'next-i18next'
+import { SyntheticEvent } from 'react'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from 'fb'
 
 export const WithEmail = ({
     value,
@@ -9,12 +13,25 @@ export const WithEmail = ({
     value: number
     index: number
 }) => {
-    const [{ email, password }, onInput] = useData('email', 'password')
+    const { t } = useTranslation('sign-in', { keyPrefix: 'with-email' })
+    const [{ email, password }, control] = useData('email', 'password')
+
+    const handleSubmit = (ev: SyntheticEvent) => {
+        ev.preventDefault()
+
+        signInWithEmailAndPassword(auth, email, password)
+    }
 
     return (
         <TabPanel value={value} index={index}>
-            <TextField value={email} onInput={onInput('email')} />
-            <TextField value={password} onInput={onInput('password')} />
+            <form onSubmit={handleSubmit}>
+                <TextField {...control('email')} placeholder={t('email')} />
+                <TextField
+                    {...control('password')}
+                    placeholder={t('password')}
+                />
+                <Button type="submit">{t('submit')} </Button>
+            </form>
         </TabPanel>
     )
 }
