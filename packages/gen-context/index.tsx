@@ -1,35 +1,28 @@
-import {
-    Provider,
-    ComponentType,
-    Context,
-    PropsWithChildren,
-    useContext,
-    createContext,
-} from 'react'
+import { useContext, createContext } from 'react'
+import { AnyObj, EmptyObj } from 'types'
+import { getDefaultCustomProvider } from './customProviders/Default'
+import { CustomProvider, GetCustomUseContext, WrapperProvider } from './types'
 
-type PropsWithRealProviders<T, P> = Record<'RealProvider', Provider<T>> & P
-
-type CustomProvider<T, P> = ComponentType<
-    PropsWithChildren<PropsWithRealProviders<T, P>>
->
-
-type GetCustomUseContext<T, CP> = (
-    context: Context<T>
-) => <ST extends T = T>(p: CP) => ST
-
-type WrapperProvider<P> = (p: PropsWithChildren<P>) => JSX.Element
-
-export const genContext = <T, P, CP>(
-    CustomProvider: CustomProvider<T, P>,
-    getCustomUseContext: GetCustomUseContext<T, CP>,
-    defaultValue: T
+// T - value, P extends AnyObj - CustomProvider props, CP - custom useContext props
+export const genContext = <
+    T,
+    P extends AnyObj = EmptyObj,
+    CP extends AnyObj = EmptyObj
+>(
+    defaultValue: T,
+    CustomProvider: CustomProvider<T, P> = getDefaultCustomProvider<T>(
+        defaultValue
+    ) as CustomProvider<T, P>,
+    getCustomUseContext?: GetCustomUseContext<T, CP>
 ): [ReturnType<GetCustomUseContext<T, CP>>, WrapperProvider<P>] => {
     const context = createContext(defaultValue)
 
     const useContextDefaultHook = <ST extends T = T>() =>
         useContext(context) as ST
 
-    const _useContext = getCustomUseContext(context) || useContextDefaultHook
+    const _useContext = getCustomUseContext
+        ? getCustomUseContext(context)
+        : useContextDefaultHook
 
     const WrapperProvider: WrapperProvider<P> = (p) => (
         <CustomProvider {...p} RealProvider={context.Provider} />
@@ -37,3 +30,5 @@ export const genContext = <T, P, CP>(
 
     return [_useContext, WrapperProvider]
 }
+
+export * from './customProviders'

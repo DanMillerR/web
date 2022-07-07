@@ -5,6 +5,7 @@
     "types": "index.ts",
     "license": "MIT",
     "devDependencies": {
-        "@types/react": "^18.0.9"
+        "@types/react": "^18.0.9",
+        "types": "*"
     }
 }
