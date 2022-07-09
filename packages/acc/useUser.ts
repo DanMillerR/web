@@ -13,6 +13,19 @@ export const useUser = (): [
         udErr: Error
     }
 ] => {
-    // @ts-ignore
-    return [{}, {}]
+    return [
+        // @ts-ignore
+        {},
+        {
+            // @ts-ignore
+            tasks: {
+                a: {
+                    id: 'a',
+                    title: 'x',
+                    img:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.3G5corsUR1HRwSr0aDwxMgHaFJ%26pid%3DApi&f=1',
+                    text: 'afsdf',
+                },
+            },
+        },
+    ]
 }
