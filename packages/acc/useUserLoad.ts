@@ -1,20 +1,23 @@
 import { useEffect } from 'react'
 import { useLocalConfig } from 'ctx'
+import { useUser } from '.'
+import { useRequireUser } from './useRequireUser'
 
 // manages, what to do with user
-export const useAccounts = () => {
+export const useUserLoad = () => {
     const {
         signInRequired,
         emailVerificationRequired,
         additionalRequiredProps,
     } = useLocalConfig().user
     const [{ u, uLoad, uErr }, { ud, udErr, udLoad }] = useUser()
+    const redirectToAcc = useRequireUser()
 
     useEffect(() => {
-        if (uLoad) return // todo: showuserLoadingCaution()
+        if (uLoad) return // todo: showUserLoadingCaution()
         if (uErr) return // todo: showUserErrorCaution()
 
-        if (signInRequired && !u) return // todo: redirectToSignIn()
+        if (signInRequired && !u) return redirectToAcc()
 
         if (u) {
             if (emailVerificationRequired && !u.emailVerified) return // todo: showEmailVerificationCaution()
