@@ -1,11 +1,11 @@
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import { PropsWithChildren } from 'react'
-import { useAccounts } from 'acc'
+import { useUserLoad } from 'acc'
 
 export const Utils = ({
     children,
 }: PropsWithChildren<Record<never, never>>) => {
-    useAccounts()
+    // useUserLoad()
 
     return (
         <ThemeProvider theme={createTheme({})}>
