@@ -1,25 +1,25 @@
 {
-    "mainTitle": "$t(common:name) — your space, your ecosystem",
-    "productsTitle": "Our products",
-    "products": {
-        "landing": {
-            "title": "Landing",
-            "description": "This website. Shows all our products"
-        },
-        "accSys": {
-            "title": "Accounts System",
-            "description": "Websites (and system), that is used to manage your accounts and accounts preferences"
-        }
+  "mainTitle": "$t(common:name) — your space, your ecosystem",
+  "productsTitle": "Our products",
+  "products": {
+    "landing": {
+      "title": "Landing",
+      "description": "This website. Shows all our products"
     },
-    "contactUs": {
-        "title": "Contact us",
-        "inSocials": "In socials",
-        "viaEmail": {
-            "title": "Via email",
-            "help": "Help",
-            "partnership": "Partnership",
-            "suggestions": "Suggestions",
-            "other": "Other"
-        }
+    "accSys": {
+      "title": "Accounts System",
+      "description": "Websites (and system), that is used to manage your accounts and accounts preferences"
     }
+  },
+  "contactUs": {
+    "title": "Contact us",
+    "inSocials": "In socials",
+    "viaEmail": {
+      "title": "Via email",
+      "help": "Help",
+      "partnership": "Partnership",
+      "suggestions": "Suggestions",
+      "other": "Other"
+    }
+  }
 }

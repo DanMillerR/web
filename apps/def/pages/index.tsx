@@ -4,5 +4,5 @@ const Index = () => <></>
 
 export default Index
 export const getStaticProps = async () => ({
-    props: await serverSideTranslations('en'),
+  props: await serverSideTranslations('en'),
 })

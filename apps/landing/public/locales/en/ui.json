@@ -1,8 +1,8 @@
 {
-    "header": {
-        "title": "$t(common:name)"
-    },
-    "footer": {
-        "text": "With 💗 by $t(common:author)"
-    }
+  "header": {
+    "title": "$t(common:name)"
+  },
+  "footer": {
+    "text": "With 💗 by $t(common:author)"
+  }
 }

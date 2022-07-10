@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
 
 export const useRequireUser = () => {
-    const { replace } = useRouter()
+  const { replace } = useRouter()
 
-    return () => {
-        replace('url')
-    }
+  return () => {
+    replace('url')
+  }
 }

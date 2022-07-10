@@ -5,16 +5,16 @@ import { ViaEmail } from './ViaEmail'
 import { BlockCover } from 'ui'
 
 export const ContactUs = () => {
-    const { t } = useTranslation('landing', { keyPrefix: 'contactUs' })
-    const { palette } = useTheme()
+  const { t } = useTranslation('landing', { keyPrefix: 'contactUs' })
+  const { palette } = useTheme()
 
-    return (
-        <BlockCover sx={{ p: 1, backgroundColor: palette.grey[200] }}>
-            <Typography textAlign="center" variant="h4">
-                {t('title')}
-            </Typography>
-            <InSocials />
-            <ViaEmail />
-        </BlockCover>
-    )
+  return (
+    <BlockCover sx={{ p: 1, backgroundColor: palette.grey[200] }}>
+      <Typography textAlign="center" variant="h4">
+        {t('title')}
+      </Typography>
+      <InSocials />
+      <ViaEmail />
+    </BlockCover>
+  )
 }

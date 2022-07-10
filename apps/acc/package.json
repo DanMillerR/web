@@ -1,25 +1,25 @@
 {
-    "name": "accounts",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev"
-    },
-    "dependencies": {
-        "axios": "^0.27.2",
-        "firebase": "^9.8.4",
-        "firebase-admin": "^11.0.0",
-        "form": "*",
-        "fb": "*",
-        "next": "^12.1.6",
-        "next-i18next": "^11.0.0",
-        "react": "^18.1.0",
-        "react-dom": "^18.1.0"
-    },
-    "devDependencies": {
-        "@types/node": "^17.0.12",
-        "@types/react": "18.0.9",
-        "next-transpile-modules": "9.0.0",
-        "typescript": "^4.5.3"
-    }
+  "name": "accounts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "firebase": "^9.8.4",
+    "firebase-admin": "^11.0.0",
+    "form": "*",
+    "fb": "*",
+    "next": "^12.1.6",
+    "next-i18next": "^11.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "18.0.9",
+    "next-transpile-modules": "9.0.0",
+    "typescript": "^4.5.3"
+  }
 }

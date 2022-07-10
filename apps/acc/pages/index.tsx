@@ -5,40 +5,40 @@ import { Tabs, Tab } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 
 const Variants = ({
-    value,
-    onChange,
+  value,
+  onChange,
 }: {
-    value: number
-    onChange: (ev: SyntheticEvent, newValue: number) => void
+  value: number
+  onChange: (ev: SyntheticEvent, newValue: number) => void
 }) => {
-    const { t } = useTranslation('sign-in')
+  const { t } = useTranslation('sign-in')
 
-    return (
-        <>
-            <Tabs value={value} onChange={onChange}>
-                <Tab label={t('withEmail')} />
-                <Tab label={t('withPhone')} />
-            </Tabs>
-        </>
-    )
+  return (
+    <>
+      <Tabs value={value} onChange={onChange}>
+        <Tab label={t('withEmail')} />
+        <Tab label={t('withPhone')} />
+      </Tabs>
+    </>
+  )
 }
 
 const Index = () => {
-    const [value, setValue] = useState(0)
+  const [value, setValue] = useState(0)
 
-    const handleChange = (_: SyntheticEvent, newValue: number) => {
-        setValue(newValue)
-    }
+  const handleChange = (_: SyntheticEvent, newValue: number) => {
+    setValue(newValue)
+  }
 
-    return (
-        <>
-            <Variants value={value} onChange={handleChange} />
-            <WithEmail value={value} index={0} />
-        </>
-    )
+  return (
+    <>
+      <Variants value={value} onChange={handleChange} />
+      <WithEmail value={value} index={0} />
+    </>
+  )
 }
 
 export default Index
 export const getStaticProps = async () => ({
-    props: await serverSideTranslations('en'),
+  props: await serverSideTranslations('en'),
 })

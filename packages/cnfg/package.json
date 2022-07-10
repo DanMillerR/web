@@ -1,10 +1,10 @@
 {
-    "name": "cnfg",
-    "version": "1.0.0",
-    "main": "index.ts",
-    "types": "index.ts",
-    "license": "MIT",
-    "dependencies": {
-        "utils": "*"
-    }
+  "name": "cnfg",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "utils": "*"
+  }
 }

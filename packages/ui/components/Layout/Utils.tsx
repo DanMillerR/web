@@ -3,14 +3,14 @@ import { PropsWithChildren } from 'react'
 import { useUserLoad } from 'acc'
 
 export const Utils = ({
-    children,
+  children,
 }: PropsWithChildren<Record<never, never>>) => {
-    // useUserLoad()
+  // useUserLoad()
 
-    return (
-        <ThemeProvider theme={createTheme({})}>
-            <CssBaseline enableColorScheme />
-            {children}
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider theme={createTheme({})}>
+      <CssBaseline enableColorScheme />
+      {children}
+    </ThemeProvider>
+  )
 }

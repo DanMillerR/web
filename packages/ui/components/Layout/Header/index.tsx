@@ -4,11 +4,11 @@ import { useTranslation } from 'next-i18next'
 import { BlockCover } from '../../..'
 
 export const Header = () => {
-    const { t } = useTranslation('ui', { keyPrefix: 'header' })
+  const { t } = useTranslation('ui', { keyPrefix: 'header' })
 
-    return (
-        <BlockCover sx={styles.headerSx}>
-            <Typography>{t('title')}</Typography>
-        </BlockCover>
-    )
+  return (
+    <BlockCover sx={styles.headerSx}>
+      <Typography>{t('title')}</Typography>
+    </BlockCover>
+  )
 }

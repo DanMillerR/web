@@ -7,31 +7,28 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from 'fb'
 
 export const WithEmail = ({
-    value,
-    index,
+  value,
+  index,
 }: {
-    value: number
-    index: number
+  value: number
+  index: number
 }) => {
-    const { t } = useTranslation('sign-in', { keyPrefix: 'with-email' })
-    const [{ email, password }, control] = useData('email', 'password')
+  const { t } = useTranslation('sign-in', { keyPrefix: 'with-email' })
+  const [{ email, password }, control] = useData('email', 'password')
 
-    const handleSubmit = (ev: SyntheticEvent) => {
-        ev.preventDefault()
+  const handleSubmit = (ev: SyntheticEvent) => {
+    ev.preventDefault()
 
-        signInWithEmailAndPassword(auth, email, password)
-    }
+    signInWithEmailAndPassword(auth, email, password)
+  }
 
-    return (
-        <TabPanel value={value} index={index}>
-            <form onSubmit={handleSubmit}>
-                <TextField {...control('email')} placeholder={t('email')} />
-                <TextField
-                    {...control('password')}
-                    placeholder={t('password')}
-                />
-                <Button type="submit">{t('submit')} </Button>
-            </form>
-        </TabPanel>
-    )
+  return (
+    <TabPanel value={value} index={index}>
+      <form onSubmit={handleSubmit}>
+        <TextField {...control('email')} placeholder={t('email')} />
+        <TextField {...control('password')} placeholder={t('password')} />
+        <Button type="submit">{t('submit')} </Button>
+      </form>
+    </TabPanel>
+  )
 }
