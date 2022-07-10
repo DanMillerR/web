@@ -1,7 +1,7 @@
 import { useUser } from 'acc'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Task } from '../types'
-import { Card, CardMedia, Typography } from '@mui/material'
+import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import { Flex } from 'ui'
 
 const Index = () => {
@@ -13,15 +13,24 @@ const Index = () => {
             {Object.values(tasks as Record<string, Task>).map(
                 ({ title, img, text, id }) => (
                     <Card sx={{ display: 'flex' }} key={id}>
-                        <CardMedia
-                            component="img"
-                            sx={{ width: 151 }}
-                            image={img}
-                        />
-                        <Flex clmn>
-                            <Typography variant="subtitle2">{title}</Typography>
-                            <Typography variant="body1">{text}</Typography>
-                        </Flex>
+                        {img && (
+                            <CardMedia
+                                component="img"
+                                sx={{ width: 151 }}
+                                image={img}
+                            />
+                        )}
+                        <CardContent>
+                            <Flex clmn>
+                                <Typography variant="h4">{title}</Typography>
+                                <Typography
+                                    variant="body1"
+                                    color="text.secondary"
+                                >
+                                    {text}
+                                </Typography>
+                            </Flex>
+                        </CardContent>{' '}
                     </Card>
                 )
             )}
