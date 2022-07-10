@@ -1,17 +1,25 @@
 export type Task = {
+    id: string
+
+    // text
     title: string
     subTitle: string
     text: string
+
+    // state
     progress: number
     done: boolean
     skipped: boolean
-    time: {
+
+    // time
+    timestamps: {
         create: string
         start: string
-        end: string
+        update: string
+        deadline: string // theoretically ends
+        end: string // actually ends
     }
     img: string
-    id: string
     period: {
         schema: string
         mod:
@@ -21,10 +29,13 @@ export type Task = {
             | 'EVERY_X_IN_EVERY_MONTH'
             | 'EVERY_X_IN_EVERY_MONTH'
     }
+
     markers: {
         importantness: number
         urgency: number
         address: string
+        person: string
     }
+
     subTasks: Task[]
 }
