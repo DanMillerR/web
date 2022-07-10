@@ -7,9 +7,9 @@ export const Flex = ({
     <Box
         {...props}
         sx={{
-            ...props,
+            ...props.sx,
             display: 'flex',
-            ...(clmn && { flexDirection: 'column' }),
+            ...(clmn ? { flexDirection: 'column' } : {}),
         }}
     />
 )
