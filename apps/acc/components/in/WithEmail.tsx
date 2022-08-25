@@ -1,4 +1,4 @@
-import { TabPanel } from 'ui'
+import { Flex, TabPanel } from 'ui'
 import { useData } from 'form'
 import { Button, TextField } from '@mui/material'
 import { useTranslation } from 'next-i18next'
@@ -13,7 +13,7 @@ export const WithEmail = ({
   value: number
   index: number
 }) => {
-  const { t } = useTranslation('sign-in', { keyPrefix: 'with-email' })
+  const { t } = useTranslation('sign-in', { keyPrefix: 'withEmail' })
   const [{ email, password }, control] = useData('email', 'password')
 
   const handleSubmit = (ev: SyntheticEvent) => {
@@ -25,9 +25,11 @@ export const WithEmail = ({
   return (
     <TabPanel value={value} index={index}>
       <form onSubmit={handleSubmit}>
-        <TextField {...control('email')} placeholder={t('email')} />
-        <TextField {...control('password')} placeholder={t('password')} />
-        <Button type="submit">{t('submit')} </Button>
+        <Flex clmn>
+          <TextField {...control('email')} placeholder={t('email')} />
+          <TextField {...control('password')} placeholder={t('password')} />
+          <Button type="submit">{t('submit')}</Button>
+        </Flex>
       </form>
     </TabPanel>
   )
