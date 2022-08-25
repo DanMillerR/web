@@ -1,0 +1,8 @@
+{
+  "withEmail": {
+    "label": "With Email",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit"
+  }
+}
