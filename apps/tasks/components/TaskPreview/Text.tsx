@@ -1,4 +1,5 @@
 import { Typography, TypographyProps } from '@mui/material'
+import { taskPreview } from 'cnfg/tasks'
 
 export const TaskPreviewText = ({
   text,
@@ -8,7 +9,11 @@ export const TaskPreviewText = ({
   color: TypographyProps['color']
 }) =>
   text ? (
-    <Typography sx={{ flexGrow: 1 }} variant="body1" color={color}>
+    <Typography
+      sx={{ flexGrow: 1 }}
+      variant={taskPreview.textVariant}
+      color={color}
+    >
       {text}
     </Typography>
   ) : null

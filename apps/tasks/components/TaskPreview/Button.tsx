@@ -14,8 +14,9 @@ export const TaskPreviewButton = ({
     sx={{
       backgroundColor: color + '.main',
       color: color + '.contrastText',
-      borderRadius: 0,
-      flexGrow: 1,
+      // borderRadius: 0,
+      border: color + '.contrastText' + ' solid 2px',
+      margin: '0.2em',
     }}
   >
     <Symbol />
