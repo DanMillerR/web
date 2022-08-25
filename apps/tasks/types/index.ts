@@ -8,8 +8,7 @@ export type Task = {
 
   // state
   progress: number
-  done: boolean
-  skipped: boolean
+  state: number
 
   // time
   timestamps: {
