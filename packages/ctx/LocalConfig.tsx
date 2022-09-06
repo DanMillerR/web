@@ -5,5 +5,6 @@ import { PropsWithRealProviders } from 'gen-context/types'
 
 export const [useLocalConfig, LocalConfig] = genContext<
   typeof config,
-  PropsWithRealProviders<PropsWithChildren<{ value: typeof config }>>
+  PropsWithChildren<{ value: typeof config }>
+  //@ts-ignore
 >(config, getCustomProviderWithValueArg<typeof config>())
