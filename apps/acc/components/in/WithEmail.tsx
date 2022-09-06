@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next'
 import { SyntheticEvent } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from 'fb'
+import { useLoadings } from 'loadings'
 
 export const WithEmail = ({
   value,
@@ -15,11 +16,15 @@ export const WithEmail = ({
 }) => {
   const { t } = useTranslation('sign-in', { keyPrefix: 'withEmail' })
   const [{ email, password }, control] = useData('email', 'password')
+  const { loading, error, success } = useLoadings()
 
   const handleSubmit = (ev: SyntheticEvent) => {
     ev.preventDefault()
 
+    loading()
     signInWithEmailAndPassword(auth, email, password)
+      .then(() => success('(T) SUCCESS'))
+      .catch(error)
   }
 
   return (
