@@ -1,9 +1,4 @@
-import {
-  CardActionArea,
-  CardActions,
-  CardContent,
-  useTheme,
-} from '@mui/material'
+import { CardActionArea, CardContent } from '@mui/material'
 import { Card } from '@mui/material'
 import { Flex } from 'ui'
 import { TaskPreviewProps } from '../../types/TaskPreview'
@@ -56,10 +51,10 @@ export const TaskPreview = ({
 }: TaskPreviewProps) => {
   const bg = getBg(deadlined, skipped, fail, done)
   const color = getColor(deadlined, skipped, fail, done)
-  const theme = useTheme()
-  const { fontSize, lineHeight } = theme.typography[taskPreview.textVariant]
+  // const theme = useTheme()
+  // const { fontSize, lineHeight } = theme.typography[taskPreview.textVariant]
 
-  const height = mult(fontSize as string, lineHeight as number, 1)
+  // const height = mult(fontSize as string, lineHeight as number, 1)
 
   const cardSx = {
     display: 'flex',

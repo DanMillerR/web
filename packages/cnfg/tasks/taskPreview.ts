@@ -1,5 +1,9 @@
 import { Variant } from '@mui/material/styles/createTypography'
-import { Close, Done, Settings } from '@mui/icons-material'
+import {
+  Close,
+  Done,
+  // Settings
+} from '@mui/icons-material'
 
 export const textVariant: Variant = 'body1'
 export const buttons = [
