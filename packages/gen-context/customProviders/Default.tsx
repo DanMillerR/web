@@ -6,7 +6,11 @@ type DefaultCustomProvider<T> = ComponentType<
 >
 
 // sends it's value from arg of fn
-export const getDefaultCustomProvider =
-  <T,>(val: T): DefaultCustomProvider<T> =>
-  ({ RealProvider, children }) =>
-    <RealProvider value={val}>{children}</RealProvider>
+export const getDefaultCustomProvider = <T,>(val: T) => {
+  const DefaultCustomProvider: DefaultCustomProvider<T> = ({
+    RealProvider,
+    children,
+  }) => <RealProvider value={val}>{children}</RealProvider>
+
+  return DefaultCustomProvider
+}
