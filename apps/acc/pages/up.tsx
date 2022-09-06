@@ -3,9 +3,9 @@ import { Button, TextField } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { SyntheticEvent } from 'react'
 import { updateProfile, createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from 'fb'
+import { auth, db } from 'fb'
 import { doc, setDoc } from 'firebase/firestore'
-import { db } from 'fb'
+import { useLoadings } from 'loadings'
 
 const Up = () => {
   const { t } = useTranslation('sign-up', { keyPrefix: 'with-email' })
@@ -14,21 +14,25 @@ const Up = () => {
     'name',
     'password'
   )
+  const { loading, success, error } = useLoadings()
 
   const handleSubmit = (ev: SyntheticEvent) => {
     ev.preventDefault()
 
-    createUserWithEmailAndPassword(auth, email, password).then(
-      async ({ user }) => {
+    loading()
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async ({ user }) => {
         await setDoc(doc(db, 'users/' + user.uid), {
           email,
           password,
           name,
-        })
+        }).catch(error)
 
         await updateProfile(user, { displayName: name })
-      }
-    )
+          .then(() => success('(T) SUCCESS'))
+          .catch(error)
+      })
+      .catch(error)
   }
 
   return (
