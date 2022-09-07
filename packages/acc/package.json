@@ -5,9 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "cnfg": "*",
-    "ctx": "*",
+    "ctx": "*"
+  },
+  "peerDependencies": {
     "firebase": "^9.8.4",
-    "react": "^18.2.0",
-    "react-firebase-hooks": "^4.0.2"
+    "react": "^18.2.0"
   }
 }
