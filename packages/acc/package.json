@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "cnfg": "*",
-    "ctx": "*"
+    "react-firebase-hooks": "^5.0.3"
   },
   "peerDependencies": {
+    "cnfg": "*",
+    "ctx": "*",
     "firebase": "^9.8.4",
     "react": "^18.2.0"
   }
