@@ -6,6 +6,7 @@ import { updateProfile, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from 'fb'
 import { doc, setDoc } from 'firebase/firestore'
 import { useLoadings } from 'loadings'
+import { Flex } from 'ui'
 
 const Up = () => {
   const { t } = useTranslation('sign-up', { keyPrefix: 'with-email' })
@@ -37,14 +38,16 @@ const Up = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField required {...control('name')} placeholder={t('name')} />
-      <TextField required {...control('email')} placeholder={t('email')} />
-      <TextField
-        required
-        {...control('password')}
-        placeholder={t('password')}
-      />
-      <Button type="submit">{t('submit')}</Button>
+      <Flex clmn>
+        <TextField required {...control('name')} placeholder={t('name')} />
+        <TextField required {...control('email')} placeholder={t('email')} />
+        <TextField
+          required
+          {...control('password')}
+          placeholder={t('password')}
+        />
+        <Button type="submit">{t('submit')}</Button>
+      </Flex>
     </form>
   )
 }
