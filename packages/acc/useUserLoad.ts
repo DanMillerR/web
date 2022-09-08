@@ -7,32 +7,39 @@ import { useRequireUser } from './useRequireUser'
 export const useUserLoad = () => {
   const { signInRequired, emailVerificationRequired, additionalRequiredProps } =
     useLocalConfig().user
-  const [u, ud, { loading, error }, { dError, dLoading }] = useUser()
+  const [user, userData, { loading, error }, { dError, dLoading }] = useUser()
   const requireUser = useRequireUser()
-  const [r, sr] = useState('')
+  const [state, setState] = useState('')
 
   useEffect(() => {
-    if (loading) return sr('LOADING')
-    if (error) return sr('ERROR')
+    // user load handling
+    if (loading) return setState('LOADING')
+    if (error) return setState('ERROR')
 
-    if (signInRequired && !u) {
+    // "account required" protection
+    if (signInRequired && !user) {
       requireUser()
       return
     }
 
-    if (u) {
-      if (emailVerificationRequired && !u.emailVerified) return sr('VER')
+    if (user) {
+      // "email verification required" protection
+      if (emailVerificationRequired && !user.emailVerified)
+        return setState('VER')
 
-      if (additionalRequiredProps[0]) {
-        if (dError) return sr('LOADING')
-        if (dLoading) return sr('ERROR')
+      // data load handing
+      if (dLoading) return setState('LOADING')
+      if (dError) return setState('ERROR')
 
-        for (const additionalRequiredProp of additionalRequiredProps)
-          if (!additionalRequiredProps.includes(additionalRequiredProp))
-            return sr('INFO')
-      }
+      // "additonal props required" protection
+      if (userData && additionalRequiredProps[0])
+        for (const p of additionalRequiredProps)
+          if (!(p in userData)) return setState('INFO')
     }
-  }, [u, loading, error, ud, dError, dLoading])
 
-  return r
+    // if all tests are passed, reset
+    setState('')
+  }, [user, loading, error, userData, dError, dLoading])
+
+  return state
 }
