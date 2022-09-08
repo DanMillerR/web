@@ -13,6 +13,8 @@ const App = ({ Component, pageProps }: AppProps) => (
         emailVerificationRequired: false,
         signInRequired: false,
       },
+      //@ts-ignore
+      CONTAINER_MAX_WIDTH: 'xs',
     }}
   >
     <Layout>
