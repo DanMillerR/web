@@ -7,4 +7,5 @@ export const signInVariants = [
     Component: WithEmail,
   },
 ]
+
 export const url = 'http://localhost:3001/?message=acc-required'
