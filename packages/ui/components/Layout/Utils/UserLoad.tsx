@@ -1,9 +1,10 @@
-import { useUserLoad } from 'acc'
+import { useAutoIn, useUserLoad } from 'acc'
 import { PropsWithChildren } from 'react'
 
 export const UserLoad = ({
   children,
 }: PropsWithChildren<{ [K in never]: never }>) => {
+  useAutoIn()
   const code = useUserLoad()
 
   switch (code) {
