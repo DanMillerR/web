@@ -5,6 +5,8 @@ const withTM = require('next-transpile-modules')([
   'gen-context',
   'acc',
   'ctx',
+  'form',
+  'loadings',
 ])
 const { i18n } = require('./next-i18next.config')
 
