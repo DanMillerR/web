@@ -2,9 +2,12 @@ import { useRouter } from 'next/router'
 import { url } from 'cnfg/acc'
 
 export const useRequireUser = () => {
-  const { pathname, replace } = useRouter()
-  const replaceUrl = new URL(url)
-  replaceUrl.searchParams.set('return-url', pathname)
+  const { replace } = useRouter()
 
-  return () => replace(replaceUrl)
+  return () => {
+    const replaceUrl = new URL(url)
+    replaceUrl.searchParams.set('return-url', location.href)
+
+    replace(replaceUrl)
+  }
 }
