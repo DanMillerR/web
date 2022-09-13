@@ -1,34 +1,28 @@
-import { useContext, createContext } from 'react'
-import { AnyObj, EmptyObj } from 'types'
-import { getDefaultCustomProvider } from './customProviders/Default'
-import { CustomProvider, GetCustomUseContext, WrapperProvider } from './types'
+import { useContext, createContext, Context, ComponentType } from 'react'
+import { CustomProvider, CustomUseConfig } from './types'
 
-// T - value, P extends AnyObj - CustomProvider props, CP - custom useContext props
-export const genContext = <
-  T,
-  P extends AnyObj = EmptyObj,
-  CP extends AnyObj = EmptyObj
->(
-  defaultValue: T,
-  CustomProvider: CustomProvider<T, P> = getDefaultCustomProvider<T>(
-    defaultValue
-  ) as CustomProvider<T, P>,
-  getCustomUseContext?: GetCustomUseContext<T, CP>
-): [ReturnType<GetCustomUseContext<T, CP>>, WrapperProvider<P>] => {
+export const genContext = <T, WP>({
+  defaultValue,
+  provider: CustomProvider,
+  useContext: customUseContext,
+}: {
+  defaultValue: T
+  provider: CustomProvider<T, WP>
+  useContext?: CustomUseConfig<T>
+}): [ReturnType<CustomUseConfig<T>>, ComponentType<WP>] => {
   const context = createContext(defaultValue)
 
-  const useContextDefaultHook = <ST extends T = T>() =>
-    useContext(context) as ST
+  const useContextDefaultHook = () => useContext(context)
 
-  const _useContext = getCustomUseContext
-    ? getCustomUseContext(context)
+  const useGennedContext = customUseContext
+    ? customUseContext(context)
     : useContextDefaultHook
 
-  const WrapperProvider: WrapperProvider<P> = (p) => (
+  const WrapperProvider = (p: WP) => (
     <CustomProvider {...p} RealProvider={context.Provider} />
   )
 
-  return [_useContext, WrapperProvider]
+  return [useGennedContext, WrapperProvider]
 }
 
 export * from './customProviders'

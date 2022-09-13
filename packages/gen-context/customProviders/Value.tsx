@@ -1,14 +1,11 @@
 import { PropsWithChildren } from 'react'
-import { PropsWithRealProviders } from '../types'
+import { CustomProvider } from '../types'
 
-type Value<T> = { value: T }
-
-export const getCustomProviderWithValueArg = <T,>() => {
-  const CustomProviderWithValueArg = ({
-    RealProvider,
-    value,
-    children,
-  }: PropsWithRealProviders<PropsWithChildren<Value<T>>>) => (
+export const valueArg = <T,>() => {
+  const CustomProviderWithValueArg: CustomProvider<
+    T,
+    PropsWithChildren<{ value: T }>
+  > = ({ RealProvider, value, children }) => (
     <RealProvider value={value}>{children}</RealProvider>
   )
 

@@ -1,16 +1,12 @@
-import { ComponentType, PropsWithChildren } from 'react'
-import { PropsWithRealProviders } from '../types'
+import { PropsWithChildren } from 'react'
+import { EmptyObj } from 'types'
+import { CustomProvider } from '../types'
 
-type DefaultCustomProvider<T> = ComponentType<
-  PropsWithRealProviders<T, PropsWithChildren<T>>
->
+export const staticValue = <T,>(value: T) => {
+  const CustomProviderWithStaticValue: CustomProvider<
+    T,
+    PropsWithChildren<EmptyObj>
+  > = ({ RealProvider, children }) => <RealProvider {...{ value, children }} />
 
-// sends it's value from arg of fn
-export const getDefaultCustomProvider = <T,>(val: T) => {
-  const DefaultCustomProvider: DefaultCustomProvider<T> = ({
-    RealProvider,
-    children,
-  }) => <RealProvider value={val}>{children}</RealProvider>
-
-  return DefaultCustomProvider
+  return CustomProviderWithStaticValue
 }
