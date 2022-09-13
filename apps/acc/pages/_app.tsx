@@ -6,14 +6,10 @@ import { LocalConfig } from 'ctx'
 
 const App = ({ Component, pageProps }: AppProps) => (
   <LocalConfig
-    //@ts-ignore
     value={{
       user: {
-        additionalRequiredProps: [],
-        emailVerificationRequired: false,
         signInRequired: false,
       },
-      //@ts-ignore
       CONTAINER_MAX_WIDTH: 'xs',
     }}
   >
