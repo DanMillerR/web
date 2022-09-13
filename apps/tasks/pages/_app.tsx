@@ -1,14 +1,11 @@
-import { Layout } from 'ui'
+import { Wrapper } from 'ui'
 import { AppProps } from 'next/app'
 import { appWithTranslation } from 'next-i18next'
-import { LocalConfig } from 'ctx'
 
 const App = ({ Component, pageProps }: AppProps) => (
-  <LocalConfig>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  </LocalConfig>
+  <Wrapper>
+    <Component {...pageProps} />
+  </Wrapper>
 )
 
 export default appWithTranslation(App)
