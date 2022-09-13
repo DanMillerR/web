@@ -4,26 +4,34 @@ import { auth } from 'fb'
 import { signInWithCustomToken } from 'firebase/auth'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { useUser } from './useUser'
 // TODO: CATCH
 const useGetToken = () => {
-  const { replace, query } = useRouter()
+  const { replace } = useRouter()
+  const [user, userData] = useUser()
 
   return () =>
-    axios('/api/in').then(({ data: { token } }) => {
-      const returnUrl = new URL(query['return-url'] as string)
+    user &&
+    userData &&
+    axios('/api/in?uid=' + user.uid + '&password=' + userData.password).then(
+      ({ data: { token } }) => {
+        const returnUrl = new URL(
+          new URL(location.href).searchParams.get('return-url') as string
+        )
 
-      if (token) {
-        returnUrl.searchParams.set('acc-token', token)
-        replace(returnUrl)
+        if (token) {
+          returnUrl.searchParams.set('acc-token', token)
+          replace(returnUrl)
+        }
       }
-    })
+    )
 }
 
 const useSignInWithToken = () => {
-  const { replace, query } = useRouter()
+  const { replace } = useRouter()
 
   return () => {
-    const token = query['acc-token'] as string
+    const token = new URL(location.href).searchParams.get('acc-token')
 
     if (token) {
       const path = new URL(location.href)
@@ -37,9 +45,10 @@ const useSignInWithToken = () => {
 export const useAutoIn = () => {
   const getToken = useGetToken()
   const signInWithToken = useSignInWithToken()
+  const [user, userData] = useUser()
 
   useEffect(() => {
     if (location.origin === new URL(url).origin) getToken()
     else signInWithToken()
-  }, [])
+  }, [user, userData])
 }
