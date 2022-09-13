@@ -1,4 +1,4 @@
-import { WithEmail } from './components/in/WithEmail'
+import { WithEmail } from './components/WithEmail'
 
 export const signInVariants = [
   {
