@@ -17,7 +17,14 @@ export const useUserLoad = () => {
     if (error) return setState('ERROR')
 
     // "account required" protection
-    if (signInRequired && !user) {
+    if (
+      location.pathname != '/sign-out' &&
+      !new URL(location.href).searchParams.get('acc-token') &&
+      signInRequired &&
+      !loading &&
+      !error &&
+      !user
+    ) {
       requireUser()
       return
     }
