@@ -1,11 +1,11 @@
 import { CssBaseline } from '@mui/material'
 import { PropsWithChildren } from 'react'
 import { Props, Providers } from './Providers'
-import { UserLoad } from './UserLoad'
+import { UserLoadState } from './UserLoadState'
 
 export const Utils = ({ children, localConfig }: PropsWithChildren<Props>) => (
   <Providers {...{ localConfig }}>
     <CssBaseline enableColorScheme />
-    <UserLoad {...{ children }} />
+    <UserLoadState {...{ children }} />
   </Providers>
 )
