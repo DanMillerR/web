@@ -7,7 +7,10 @@ export const useLoadings = () => {
 
   let key: SnackbarKey
 
+  const cancelLoading = () => closeSnackbar(key)
+
   return {
+    cancelLoading,
     loading: () => {
       key = enqueueSnackbar(t('loading'), {
         persist: true,
@@ -15,11 +18,11 @@ export const useLoadings = () => {
       })
     },
     success: (msg: string) => {
-      closeSnackbar(key)
+      cancelLoading()
       enqueueSnackbar(msg, { variant: 'success' })
     },
     error: (err: Error, msg?: string) => {
-      closeSnackbar(key)
+      cancelLoading()
       enqueueSnackbar(msg || err.message, { variant: 'error' })
     },
   }
