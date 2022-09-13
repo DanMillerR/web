@@ -4,10 +4,12 @@ import { PropsWithChildren } from 'react'
 import assign from 'object-assign-deep'
 import { PartialRecursively } from 'types'
 
+export type LocalConfigValue = PartialRecursively<typeof config>
+
 export const [useLocalConfig, LocalConfig] = genContext<
   typeof config,
   PropsWithChildren<{
-    value?: PartialRecursively<typeof config>
+    value?: LocalConfigValue
   }>
 >({
   defaultValue: config,
