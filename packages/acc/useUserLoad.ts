@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useLocalConfig } from 'ctx'
 import { useUser } from '.'
-import { useRequireUser } from './useRequireUser'
+import { useGoToAcc } from './useGoToAcc'
 
-// manages, what to do with user
+// loading user (and return it's state)
 export const useUserLoad = () => {
   const { signInRequired, emailVerificationRequired, additionalRequiredProps } =
     useLocalConfig().user
   const [user, userData, { loading, error }, { dError, dLoading }] = useUser()
-  const requireUser = useRequireUser()
+  const goToAcc = useGoToAcc()
   const [state, setState] = useState('')
 
   useEffect(() => {
@@ -17,17 +17,11 @@ export const useUserLoad = () => {
     if (error) return setState('ERROR')
 
     // "account required" protection
-    if (
-      location.pathname != '/sign-out' &&
-      !new URL(location.href).searchParams.get('acc-token') &&
-      signInRequired &&
-      !loading &&
-      !error &&
-      !user
-    ) {
-      requireUser()
-      return
-    }
+    const isSignOutPage = location.pathname != '/sign-out'
+    const isToken = new URL(location.href).searchParams.get('acc-token')
+    const isNoUser = !loading && !error && !user
+    if (isSignOutPage && !isToken && signInRequired && isNoUser)
+      return goToAcc()
 
     if (user) {
       // "email verification required" protection
@@ -44,8 +38,8 @@ export const useUserLoad = () => {
           if (!(p in userData)) return setState('INFO')
     }
 
-    // if all tests are passed, reset
-    setState('')
+    // if all tests are passed, reset, if not reseted
+    state && setState('')
   }, [user, loading, error, userData, dError, dLoading])
 
   return state

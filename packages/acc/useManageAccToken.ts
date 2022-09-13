@@ -10,21 +10,24 @@ const useGetToken = () => {
   const { replace } = useRouter()
   const [user, userData] = useUser()
 
-  return () =>
-    user &&
-    userData &&
-    axios('/api/in?uid=' + user.uid + '&password=' + userData.password).then(
-      ({ data: { token } }) => {
+  return () => {
+    const isDataLoaded = user && userData
+
+    if (isDataLoaded) {
+      const url = '/api/in?uid=' + user.uid + '&password=' + userData.password
+
+      axios(url).then(({ data: { token } }) => {
+        if (!token) return
+
         const returnUrl = new URL(
           new URL(location.href).searchParams.get('return-url') as string
         )
 
-        if (token) {
-          returnUrl.searchParams.set('acc-token', token)
-          replace(returnUrl)
-        }
-      }
-    )
+        returnUrl.searchParams.set('acc-token', token)
+        replace(returnUrl)
+      })
+    }
+  }
 }
 
 const useSignInWithToken = () => {
@@ -35,14 +38,16 @@ const useSignInWithToken = () => {
 
     if (token) {
       const path = new URL(location.href)
+
       path.searchParams.delete('return-url')
       path.searchParams.delete('acc-token')
+
       signInWithCustomToken(auth, token).then(() => replace(path))
     }
   }
 }
 
-export const useAutoIn = () => {
+export const useManageAccToken = () => {
   const getToken = useGetToken()
   const signInWithToken = useSignInWithToken()
   const [user, userData] = useUser()

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { url } from 'cnfg/acc'
 
-export const useRequireUser = () => {
+export const useGoToAcc = () => {
   const { replace } = useRouter()
 
   return () => {
