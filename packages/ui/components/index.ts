@@ -1,4 +1,4 @@
-export * from './Layout'
+export * from './Wrapper'
 export * from './BlockCover'
 export * from './Link'
 export * from './TabPanel'

@@ -1,13 +1,12 @@
-import { useAutoIn, useUserLoad } from 'acc'
+import { useManageAccToken, useUserLoad } from 'acc'
 import { PropsWithChildren } from 'react'
+import { EmptyObj } from 'types'
 
-export const UserLoad = ({
-  children,
-}: PropsWithChildren<{ [K in never]: never }>) => {
-  useAutoIn()
-  const code = useUserLoad()
+export const UserLoadState = ({ children }: PropsWithChildren<EmptyObj>) => {
+  const state = useUserLoad()
+  useManageAccToken()
 
-  switch (code) {
+  switch (state) {
     case 'LOADING':
       return <>LOADING</>
     case 'ERROR':
