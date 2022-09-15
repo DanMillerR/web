@@ -4,11 +4,12 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { doc, getDoc } from 'firebase/firestore'
 import { UserData } from './types'
 import { User } from 'firebase/auth'
+import assign from 'object-assign-deep'
 
 // todo?????: every unexisting property of user and userData is any
 // return user's data
 export const useUser = (
-  defaultValue: PartialRecursively<{
+  defaultValue?: PartialRecursively<{
     user: InterfaceToType<User>
     data: UserData
   }>
@@ -46,10 +47,14 @@ export const useUser = (
   }, [user])
 
   return [
-    user || { defaultValue: true, ...(defaultValue.user as User) },
-    data || {
+    // todo????: no assign, cuz "too many recursions"
+    user || {
       defaultValue: true,
-      ...(defaultValue.data as UserData),
+      ...(defaultValue?.user as User),
+    },
+    assign({}, defaultValue?.data, data) || {
+      defaultValue: true,
+      ...(defaultValue?.data as UserData),
     },
     { loading, error },
     { dLoading, dError },
