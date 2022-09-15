@@ -2,6 +2,7 @@ import { useUser } from 'acc'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { TaskPreview } from '../components/TaskPreview'
 import { Task } from 'types'
+import { Add } from '../components/Add'
 
 const deadlined = 0
 const normal = 1
@@ -19,6 +20,7 @@ const Index = () => {
 
   return (
     <>
+      <Add />
       {Object.values(tasks as Record<string, Task>)
         .sort((a, b) => a.state - b.state)
         .map(({ state, ...p }) => (
