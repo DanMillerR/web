@@ -1,7 +1,7 @@
 import { auth, db } from 'fb'
 import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, onSnapshot } from 'firebase/firestore'
 import { UserData } from './types'
 import { User } from 'firebase/auth'
 import assign from 'object-assign-deep'
@@ -32,7 +32,7 @@ export const useUser = (
 
   useEffect(() => {
     if (user) {
-      getDoc(doc(db, 'users/' + user.uid)).then((snap) => {
+      onSnapshot(doc(db, 'users/' + user.uid), (snap) => {
         if (snap.exists()) {
           setData({
             data: snap.data() as UserData,
