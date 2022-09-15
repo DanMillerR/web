@@ -5,10 +5,16 @@ import { doc, getDoc } from 'firebase/firestore'
 import { UserData } from './types'
 import { User } from 'firebase/auth'
 
+// todo?????: every unexisting property of user and userData is any
 // return user's data
-export const useUser = (): [
-  User | null | undefined,
-  UserData | null,
+export const useUser = (
+  defaultValue: PartialRecursively<{
+    user: InterfaceToType<User>
+    data: UserData
+  }>
+): [
+  { defaultValue?: true } & User,
+  { defaultValue?: true } & UserData,
   { loading: boolean; error: Error | undefined },
   { dLoading: boolean; dError: Error | null }
 ] => {
@@ -39,5 +45,13 @@ export const useUser = (): [
     }
   }, [user])
 
-  return [user, data, { loading, error }, { dLoading, dError }]
+  return [
+    user || { defaultValue: true, ...(defaultValue.user as User) },
+    data || {
+      defaultValue: true,
+      ...(defaultValue.data as UserData),
+    },
+    { loading, error },
+    { dLoading, dError },
+  ]
 }
