@@ -1,7 +1,7 @@
 import { useUser } from 'acc'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { TaskPreview } from '../components/TaskPreview'
-import { Task } from '../types'
+import { Task } from 'types'
 
 const deadlined = 0
 const normal = 1
@@ -11,7 +11,9 @@ const done = 4
 
 const Index = () => {
   //@ts-ignore
-  const [, { tasks }] = useUser()
+  const [, { tasks }] = useUser({
+    tasks: {},
+  })
 
   return (
     <>

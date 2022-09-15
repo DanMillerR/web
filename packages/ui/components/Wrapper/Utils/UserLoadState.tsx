@@ -1,6 +1,5 @@
 import { useManageAccToken, useUserLoad } from 'acc'
 import { PropsWithChildren } from 'react'
-import { EmptyObj } from 'types'
 
 export const UserLoadState = ({ children }: PropsWithChildren<EmptyObj>) => {
   const state = useUserLoad()

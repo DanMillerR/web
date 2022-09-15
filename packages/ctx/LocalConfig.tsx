@@ -2,7 +2,6 @@ import * as config from 'cnfg'
 import { genContext } from 'gen-context'
 import { PropsWithChildren } from 'react'
 import assign from 'object-assign-deep'
-import { PartialRecursively } from 'types'
 
 export type LocalConfigValue = PartialRecursively<typeof config>
 
