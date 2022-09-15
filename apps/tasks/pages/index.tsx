@@ -12,7 +12,9 @@ const done = 4
 const Index = () => {
   //@ts-ignore
   const [, { tasks }] = useUser({
-    tasks: {},
+    data: {
+      tasks: {},
+    },
   })
 
   return (
