@@ -1,19 +1,16 @@
-import { Button } from '@mui/material'
+import { signOut as signOutFirebase } from 'firebase/auth'
 import { useLocalConfig } from 'ctx'
 import { auth } from 'fb'
-import { signOut } from 'firebase/auth'
 import { useRouter } from 'next/router'
 
-export const SignOut = () => {
+export const useSignOut = () => {
   const { replace } = useRouter()
   const { user } = useLocalConfig()
 
-  const signOutHandler = () => {
+  return () => {
     if (user.signInRequired) {
       replace('/sign-out')
       // todo: catch
-    } else signOut(auth)
+    } else signOutFirebase(auth)
   }
-
-  return <Button onClick={signOutHandler}>(T) LOGOUT</Button>
 }
