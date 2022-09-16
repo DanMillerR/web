@@ -1,28 +1,18 @@
-import {
-  IconButton,
-  // , TypographyProps
-} from '@mui/material'
+import { IconButton, IconButtonProps } from '@mui/material'
 import { ComponentType } from 'react'
 
 export const TaskPreviewButton = ({
   symbol: Symbol,
   label,
   color,
+  useOnClick,
 }: {
   symbol: ComponentType
   label: string
-  color: string // todo: TypographyProps['color']
+  color: IconButtonProps['color'] // todo: TypographyProps['color']
+  useOnClick: () => () => void
 }) => (
-  <IconButton
-    title={label}
-    sx={{
-      backgroundColor: color + '.main',
-      color: color + '.contrastText',
-      // borderRadius: 0,
-      border: color + '.contrastText' + ' solid 2px',
-      margin: '0.2em',
-    }}
-  >
+  <IconButton title={label} onClick={useOnClick()} color={color}>
     <Symbol />
   </IconButton>
 )
