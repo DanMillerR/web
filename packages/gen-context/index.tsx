@@ -6,11 +6,11 @@ export const genContext = <T, WP>({
   provider: CustomProvider,
   useContext: customUseContext,
 }: {
-  defaultValue: T
+  defaultValue?: T
   provider: CustomProvider<T, WP>
   useContext?: CustomUseConfig<T>
 }): [ReturnType<CustomUseConfig<T>>, ComponentType<WP>] => {
-  const context = createContext(defaultValue)
+  const context = createContext(defaultValue) as Context<T>
 
   const useContextDefaultHook = () => useContext(context)
 
