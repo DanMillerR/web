@@ -25,5 +25,5 @@
     "jsx": "preserve"
   },
   "exclude": ["node_modules"],
-  "include": ["index.d.ts", "**/*.ts"]
+  "include": ["index.d.ts", "**/*.ts", "**/*.tsx"]
 }
