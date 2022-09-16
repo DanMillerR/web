@@ -2,9 +2,10 @@ import { useState, MouseEvent } from 'react'
 import { Avatar, Menu, MenuItem, ListItemIcon, IconButton } from '@mui/material'
 import { Logout } from '@mui/icons-material'
 import { useUser } from 'acc'
+import { useAvatarUrl } from 'cnfg/paths'
 
 export const UserMenu = () => {
-  const [, { name }] = useUser()
+  const [{ uid }, { name }] = useUser()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = !!anchorEl
 
@@ -16,7 +17,7 @@ export const UserMenu = () => {
   return (
     <>
       <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-        <Avatar sx={{ width: 32, height: 32 }} src={'r/avatar'}>
+        <Avatar sx={{ width: 32, height: 32 }} src={useAvatarUrl(uid)}>
           {name}
         </Avatar>
       </IconButton>
