@@ -1,14 +1,15 @@
 import { Typography, TypographyProps } from '@mui/material'
 import { taskPreview } from 'cnfg/tasks'
+import { useTask } from 'ctx'
 
 export const TaskPreviewText = ({
-  text,
   color,
 }: {
-  text: string
   color: TypographyProps['color']
-}) =>
-  text ? (
+}) => {
+  const { text } = useTask()
+
+  return text ? (
     <Typography
       sx={{ flexGrow: 1 }}
       variant={taskPreview.textVariant}
@@ -17,3 +18,4 @@ export const TaskPreviewText = ({
       {text}
     </Typography>
   ) : null
+}

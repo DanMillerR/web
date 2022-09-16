@@ -1,14 +1,16 @@
 import { Typography, TypographyProps } from '@mui/material'
+import { useTask } from 'ctx'
 
 export const TaskPreviewTitle = ({
-  title,
   color,
 }: {
-  title: string
   color: TypographyProps['color']
-}) =>
-  title ? (
+}) => {
+  const { title } = useTask()
+
+  return title ? (
     <Typography variant="h4" color={color}>
       {title}
     </Typography>
   ) : null
+}
