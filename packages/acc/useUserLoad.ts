@@ -9,7 +9,7 @@ export const useUserLoad = () => {
     useLocalConfig().user
   const [user, userData, { loading, error }, { dError, dLoading }] = useUser()
   const goToAcc = useGoToAcc()
-  const [state, setState] = useState('')
+  const [state, setState] = useState('LOADING')
 
   useEffect(() => {
     // user load handling
