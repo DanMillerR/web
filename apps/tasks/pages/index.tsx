@@ -3,12 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { TaskPreview } from '../components/TaskPreview'
 import { Task } from 'types'
 import { Add } from '../components/Add'
-
-const deadlined = 0
-const normal = 1
-const skipped = 2
-const fail = 3
-const done = 4
+import { TaskProvider } from 'ctx'
 
 const Index = () => {
   //@ts-ignore
@@ -23,15 +18,10 @@ const Index = () => {
       <Add />
       {Object.values(tasks as Record<string, Task>)
         .sort((a, b) => a.state - b.state)
-        .map(({ state, ...p }) => (
-          <TaskPreview
-            {...p}
-            key={p.id}
-            deadlined={state === deadlined}
-            skipped={state == skipped}
-            done={state == done}
-            fail={state == fail}
-          />
+        .map((taskProps) => (
+          <TaskProvider value={taskProps} key={taskProps.id}>
+            <TaskPreview />
+          </TaskProvider>
         ))}
     </>
   )
