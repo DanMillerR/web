@@ -6,6 +6,6 @@ import { UserLoadState } from './UserLoadState'
 export const Utils = ({ children, localConfig }: PropsWithChildren<Props>) => (
   <Providers {...{ localConfig }}>
     <CssBaseline enableColorScheme />
-    <UserLoadState {...{ children }} />
+    <UserLoadState>{children}</UserLoadState>
   </Providers>
 )
