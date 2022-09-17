@@ -2,18 +2,29 @@ import { auth, db } from 'fb/admin'
 import { NextApiHandler } from 'next'
 
 const In: NextApiHandler = async ({ query: { uid, password } }, res) => {
-  const realPassword = (await db.doc('users/' + uid).get()).get('password')
+  if (!uid) return res.json({ code: 'input-uid' })
+  if (!password) return res.json({ code: 'input-password' })
 
-  if (!uid) return res.json({ message: 'input-uid' })
-  if (!password) return res.json({ message: 'input-password' })
-  if (!realPassword) return res.json({ message: 'user-not-exist' })
+  const realPassword = (await db.doc('users/' + (uid as string)).get())
+    .get('password')
+    .catch(() =>
+      res.json({
+        code: 'get-password-error',
+      })
+    ) as string
+
+  if (!realPassword) return res.json({ code: 'user-not-exist' })
 
   if (realPassword === password)
     return res.json({
-      token: await auth.createCustomToken(uid as string),
+      token: await auth.createCustomToken(uid as string).catch(() =>
+        res.json({
+          code: 'create-token-error',
+        })
+      ),
     })
 
-  res.json({ message: 'smth-went-wrong' })
+  res.json({ code: 'wrong-password' })
 }
 
 export default In
