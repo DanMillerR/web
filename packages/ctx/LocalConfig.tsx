@@ -12,7 +12,7 @@ export const [useLocalConfig, LocalConfig] = genContext<
   }>
 >({
   defaultValue: config,
-  provider: ({ value, RealProvider, children }) => (
+  Provider: ({ value, RealProvider, children }) => (
     <RealProvider value={assign({}, config, value)}>{children}</RealProvider>
   ),
 })

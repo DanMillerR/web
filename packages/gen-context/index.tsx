@@ -3,11 +3,11 @@ import { CustomProvider, CustomUseConfig } from './types'
 
 export const genContext = <T, WP>({
   defaultValue,
-  provider: CustomProvider,
+  Provider: CustomProvider,
   useContext: customUseContext,
 }: {
   defaultValue?: T
-  provider: CustomProvider<T, WP>
+  Provider: CustomProvider<T, WP>
   useContext?: CustomUseConfig<T>
 }): [ReturnType<CustomUseConfig<T>>, ComponentType<WP>] => {
   const context = createContext(defaultValue) as Context<T>
