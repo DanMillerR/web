@@ -13,6 +13,7 @@ import {
 import { useRouter } from 'next/router'
 import { useTaskDetailsPathname } from '../paths'
 import { IconButtonProps } from '@mui/material'
+import { useLoadings } from 'loadings'
 
 type Buttons = {
   symbol: SvgIconComponent
@@ -28,15 +29,17 @@ export const buttons: Buttons = [
     labelKey: 'done',
     color: 'success',
     useOnClick: () => {
+      const { error } = useLoadings()
       const [{ uid }] = useUser()
       const { id, state } = useTask()
 
-      return () =>
+      return () => {
         updateDoc(
           doc(db, 'users/' + uid),
           'tasks.' + id + '.state',
           state == TASK_DONE_STATE ? TASK_NORMAL_STATE : TASK_DONE_STATE
-        )
+        ).catch(error) //todo
+      }
     },
   },
   {
@@ -44,15 +47,17 @@ export const buttons: Buttons = [
     labelKey: 'fail',
     color: 'error',
     useOnClick: () => {
+      const { error } = useLoadings()
       const [{ uid }] = useUser()
       const { id, state } = useTask()
 
-      return () =>
+      return () => {
         updateDoc(
           doc(db, 'users/' + uid),
           'tasks.' + id + '.state',
           state == TASK_FAILED_STATE ? TASK_NORMAL_STATE : TASK_FAILED_STATE
-        )
+        ).catch(error) //todo
+      }
     },
   },
   {
@@ -60,15 +65,17 @@ export const buttons: Buttons = [
     labelKey: 'skip',
     color: 'warning',
     useOnClick: () => {
+      const { error } = useLoadings()
       const [{ uid }] = useUser()
       const { id, state } = useTask()
 
-      return () =>
+      return () => {
         updateDoc(
           doc(db, 'users/' + uid),
           'tasks.' + id + '.state',
           state == TASK_SKIPPED_STATE ? TASK_NORMAL_STATE : TASK_SKIPPED_STATE
-        )
+        ).catch(error) //todo
+      }
     },
   },
   {
@@ -77,10 +84,13 @@ export const buttons: Buttons = [
     color: 'info',
     // todo?: make it "a" tag
     useOnClick: () => {
+      const { error } = useLoadings()
       const { replace } = useRouter()
       const pathname = useTaskDetailsPathname()
 
-      return () => replace(pathname)
+      return () => {
+        replace(pathname).catch(error) //todo
+      }
     },
   },
 ]
