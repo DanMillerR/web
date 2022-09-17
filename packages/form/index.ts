@@ -13,9 +13,9 @@ type Control<T> = (prop: T) => {
   onInput: ReturnType<GetOnInput<T>>
 }
 
-export const useData = <T extends string>(
-  ...props: T[]
-): [Obj<T>, Control<T>] => {
+export type UseDataReturn<T extends string> = [Obj<T>, Control<T>]
+
+export const useData = <T extends string>(...props: T[]): UseDataReturn<T> => {
   const [value, setValue] = useState<Obj<T>>(
     props.reduce((o, key) => ({ ...o, [key]: '' }), {}) as Obj<T>
   )
