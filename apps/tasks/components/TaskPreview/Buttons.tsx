@@ -12,6 +12,7 @@ export const TaskPreviewButtons = () => {
       <Flex>
         {buttons.map((props) => (
           <TaskPreviewButton
+            key={props.labelKey}
             {...{
               ...props,
               label: t(props.labelKey),
