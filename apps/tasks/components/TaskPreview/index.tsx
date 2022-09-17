@@ -5,26 +5,31 @@ import { TaskPreviewImg } from './Img'
 import { TaskPreviewProgress } from './Progress'
 import { TaskPreviewText } from './Text'
 import { TaskPreviewTitle } from './Title'
-import { deadlined, done, fail, skipped, taskPreview } from 'cnfg/tasks'
+import {
+  TASK_DEADLINED_STATE,
+  TASK_DONE_STATE,
+  TASK_FAILED_STATE,
+  TASK_SKIPPED_STATE,
+} from 'cnfg/tasks'
 import { TaskPreviewButtons } from './Buttons'
 import { useTask } from 'ctx'
 
 const useBg = () => {
   const { state } = useTask()
 
-  if (state == deadlined) return '#000'
-  if (state == skipped) return 'warning.dark'
-  if (state == fail) return 'error.dark'
-  if (state == done) return 'success.light'
+  if (state == TASK_DEADLINED_STATE) return '#000'
+  if (state == TASK_SKIPPED_STATE) return 'warning.dark'
+  if (state == TASK_FAILED_STATE) return 'error.dark'
+  if (state == TASK_DONE_STATE) return 'success.light'
 }
 
 const useColor = () => {
   const { state } = useTask()
 
-  if (state == deadlined) return '#fff'
-  if (state == skipped) return 'warning.contrastText'
-  if (state == fail) return 'error.contrastText'
-  if (state == done) return 'success.contrastText'
+  if (state == TASK_DEADLINED_STATE) return '#fff'
+  if (state == TASK_SKIPPED_STATE) return 'warning.contrastText'
+  if (state == TASK_FAILED_STATE) return 'error.contrastText'
+  if (state == TASK_DONE_STATE) return 'success.contrastText'
 }
 
 // const mult = (x = '', p = 0, m = 1) => {
