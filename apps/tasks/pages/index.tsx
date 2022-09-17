@@ -6,7 +6,6 @@ import { Add } from '../components/Add'
 import { TaskProvider } from 'ctx'
 
 const Index = () => {
-  //@ts-ignore
   const [, { tasks }] = useUser({
     data: {
       tasks: {},
