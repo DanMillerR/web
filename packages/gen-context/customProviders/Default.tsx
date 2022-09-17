@@ -1,5 +1,4 @@
 import { PropsWithChildren } from 'react'
-
 import { CustomProvider } from '../types'
 
 export const staticValue = <T,>(value: T) => {
