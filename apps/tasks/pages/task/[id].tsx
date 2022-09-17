@@ -1,4 +1,4 @@
-import { TaskProvider } from 'ctx'
+import { TaskDataProvider } from 'ctx'
 import { useEffect, useState } from 'react'
 import { onSnapshot } from 'firebase/firestore'
 import { USER_REF } from 'fb'
@@ -6,7 +6,12 @@ import { useUser } from 'acc'
 import { UserData } from 'acc/types'
 import { useRouter } from 'next/router'
 import { Task } from 'types'
-import { TaskDetailsTitle } from '../../components/TaskDetails'
+import {
+  TaskDetailsProgress,
+  TaskDetailsSubTitle,
+  TaskDetailsText,
+  TaskDetailsTitle,
+} from '../../components/TaskDetails'
 
 const TaskDetails = () => {
   const { query } = useRouter()
@@ -25,9 +30,12 @@ const TaskDetails = () => {
 
   return task ? (
     <>
-      <TaskProvider value={task as Task}>
+      <TaskDataProvider {...{ task }}>
         <TaskDetailsTitle />
-      </TaskProvider>
+        <TaskDetailsSubTitle />
+        <TaskDetailsProgress />
+        <TaskDetailsText />
+      </TaskDataProvider>
     </>
   ) : (
     '(T) LOADING'
