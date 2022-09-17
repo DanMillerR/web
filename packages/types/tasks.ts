@@ -18,7 +18,9 @@ export type Task = {
     deadline: string // theoretically ends
     end: string // actually ends
   }
+
   img: string
+
   period: {
     schema: string
     mod:
