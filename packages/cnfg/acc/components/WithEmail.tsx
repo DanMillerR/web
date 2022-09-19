@@ -15,6 +15,7 @@ export const WithEmail = ({
 }) => {
   const { t } = useTranslation('sign-in', { keyPrefix: 'withEmail' })
   const [{ email, password, name }, control] = useData(
+    null,
     'email',
     'password',
     'name'
@@ -32,6 +33,7 @@ export const WithEmail = ({
           email,
           password,
           name,
+          tasks: {},
         },
         () => success('(T) SIGNED UP'),
         error
