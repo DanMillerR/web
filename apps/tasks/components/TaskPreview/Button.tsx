@@ -1,7 +1,9 @@
 import { IconButton, IconButtonProps } from '@mui/material'
-import Link from 'next/link'
 import { ComponentType, Fragment } from 'react'
-import { useTaskDetailsPathname } from 'cnfg/paths'
+import { TASK_NORMAL_STATE } from 'cnfg/tasks'
+import { useTask } from 'ctx'
+import { LinkToTask } from './LinkToTask'
+import { IfHook } from 'utils'
 
 export const TaskPreviewButton = ({
   symbol: Symbol,
@@ -16,17 +18,25 @@ export const TaskPreviewButton = ({
   useOnClick?: () => () => void
   link?: true
 }) => {
-  const Wrapper = link ? Link : Fragment
+  const Wrapper = link ? LinkToTask : Fragment
+
+  const iconColor = useTask().state == TASK_NORMAL_STATE ? color : 'inherit'
 
   return (
-    <Wrapper href={useTaskDetailsPathname()}>
-      <IconButton
-        title={label}
-        {...(useOnClick ? { useOnClick: useOnClick() } : null)}
-        color={color}
-      >
-        <Symbol />
-      </IconButton>
+    <Wrapper>
+      <IfHook
+        prop="onClick"
+        cond={!!useOnClick}
+        hook={useOnClick as () => unknown}
+        Comp={({ onClick }) => (
+          <IconButton
+            title={label}
+            onClick={onClick as () => void}
+            color={iconColor}
+          />
+        )}
+      />
+      <Symbol />
     </Wrapper>
   )
 }
