@@ -4,13 +4,13 @@ import { Task } from 'types'
 import { PropsWithChildren } from 'react'
 
 export const [useTaskData, TaskDataProvider] = genContext<
-  UseDataReturn<keyof Task>,
+  UseDataReturn<Task>,
   PropsWithChildren<{
     task: Task
   }>
 >({
   Provider: ({ task, children, RealProvider }) => {
-    const data = useData(task, ...(Object.keys(task) as (keyof Task)[]))
+    const data = useData(task)
 
     return <RealProvider value={data}>{children}</RealProvider>
   },
