@@ -9,9 +9,9 @@ export const [useTaskData, TaskDataProvider] = genContext<
     task: Task
   }>
 >({
-  Provider: ({ task, RealProvider }) => {
-    const data = useData(...(Object.keys(task) as (keyof Task)[]))
+  Provider: ({ task, children, RealProvider }) => {
+    const data = useData(task, ...(Object.keys(task) as (keyof Task)[]))
 
-    return <RealProvider value={data}></RealProvider>
+    return <RealProvider value={data}>{children}</RealProvider>
   },
 })
