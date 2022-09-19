@@ -1,7 +1,8 @@
 import { useTaskData } from 'ctx'
+import Image from 'next/image'
 
 export const TaskDataImg = () => {
   const [{ img }] = useTaskData()
 
-  return img ? <img src={img} /> : null
+  return img ? <Image alt="" src={img} /> : null
 }
