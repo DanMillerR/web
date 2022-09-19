@@ -15,10 +15,14 @@ type Control<T> = (prop: T) => {
 
 export type UseDataReturn<T extends string> = [Obj<T>, Control<T>]
 
-export const useData = <T extends string>(...props: T[]): UseDataReturn<T> => {
-  const [value, setValue] = useState<Obj<T>>(
-    props.reduce((o, key) => ({ ...o, [key]: '' }), {}) as Obj<T>
-  )
+export const useData = <T extends string>(
+  defaultProps: Partial<Record<T, unknown>> | null,
+  ...props: T[]
+): UseDataReturn<T> => {
+  const [value, setValue] = useState<Obj<T>>({
+    ...(props.reduce((o, key) => ({ ...o, [key]: '' }), {}) as Obj<T>),
+    ...defaultProps,
+  })
 
   const setProp: SetProp<T> = (prop, text) =>
     setValue((p) => ({ ...p, [prop]: text }))
@@ -29,7 +33,7 @@ export const useData = <T extends string>(...props: T[]): UseDataReturn<T> => {
       setProp(prop, target.value)
 
   const control: Control<T> = (prop) => ({
-    value: value[prop],
+    value: value[prop] || '',
     onInput: getOnInput(prop),
   })
 
