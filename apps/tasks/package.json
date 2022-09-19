@@ -1,5 +1,5 @@
 {
-  "name": "tasks",
+  "name": "tasks-app",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -10,13 +10,16 @@
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.8.7",
+    "cnfg": "*",
     "firebase": "^9.10.0",
     "next": "^12.1.6",
     "next-i18next": "^11.0.0",
+    "object-path-immutable": "^4.1.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "uuid": "^9.0.0",
-    "cnfg": "*"
+    "tasks": "*",
+    "types": "*"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
