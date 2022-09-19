@@ -1,5 +1,3 @@
-import { User, Auth } from 'firebase/auth'
-
 declare global {
   type EmptyObj = Record<never, never>
   type AnyObj = Record<string, unknown>
@@ -14,3 +12,5 @@ declare global {
     [K in keyof T]: T[K]
   }
 }
+
+export {} // todo: learn
