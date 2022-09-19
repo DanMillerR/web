@@ -1,8 +1,14 @@
-import { TextField } from '@mui/material'
+import { CircularProgress, TextField } from '@mui/material'
 import { useTaskData } from 'ctx'
+import { Flex } from 'ui'
 
 export const TaskDetailsProgress = () => {
-  const [, control] = useTaskData()
+  const [{ progress }, control] = useTaskData()
 
-  return <TextField label="(T) PROGRESS" {...control('progress')} />
+  return (
+    <Flex>
+      <CircularProgress variant="determinate" value={+progress} />
+      <TextField label="(T) PROGRESS" {...control('progress')} />
+    </Flex>
+  )
 }
