@@ -12,6 +12,10 @@ import {
   TaskDetailsText,
   TaskDetailsTitle,
 } from '../../components/TaskDetails'
+import { Flex } from 'ui'
+import { TaskDataImg } from '../../components/TaskDetails/Img'
+import { Save } from '../../components/Save'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const TaskDetails = () => {
   const { query } = useRouter()
@@ -29,17 +33,26 @@ const TaskDetails = () => {
   }, [uid])
 
   return task ? (
-    <>
-      <TaskDataProvider {...{ task }}>
+    <TaskDataProvider {...{ task }}>
+      <Save originalTask={task} />
+      <Flex clmn>
+        <TaskDataImg />
         <TaskDetailsTitle />
         <TaskDetailsSubTitle />
         <TaskDetailsProgress />
         <TaskDetailsText />
-      </TaskDataProvider>
-    </>
+      </Flex>
+    </TaskDataProvider>
   ) : (
     '(T) LOADING'
   )
 }
 
 export default TaskDetails
+export const getStaticProps = async () => ({
+  props: await serverSideTranslations('en'),
+})
+export const getStaticPaths = () => ({
+  paths: [],
+  fallback: true,
+})
