@@ -10,8 +10,6 @@ import {
   TASK_SKIPPED_STATE,
   TASK_NORMAL_STATE,
 } from './state'
-import { useRouter } from 'next/router'
-import { useTaskDetailsPathname } from '../paths'
 import { IconButtonProps } from '@mui/material'
 import { useLoadings } from 'loadings'
 

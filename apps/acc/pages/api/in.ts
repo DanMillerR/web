@@ -5,13 +5,16 @@ const In: NextApiHandler = async ({ query: { uid, password } }, res) => {
   if (!uid) return res.json({ code: 'input-uid' })
   if (!password) return res.json({ code: 'input-password' })
 
-  const realPassword = (await db.doc('users/' + (uid as string)).get())
-    .get('password')
-    .catch(() =>
-      res.json({
-        code: 'get-password-error',
-      })
-    ) as string
+  const realPassword = (
+    await db
+      .doc('users/' + (uid as string))
+      .get()
+      .catch(() =>
+        res.json({
+          code: 'get-password-error',
+        })
+      )
+  )?.get('password') as string
 
   if (!realPassword) return res.json({ code: 'user-not-exist' })
 
