@@ -11,7 +11,7 @@ export const Header = ({ children }: PropsWithChildren<EmptyObj>) => {
     <AppBar position="sticky">
       <BlockCover>
         <Toolbar>
-          <Flex aic sx={{ p: 1 }}>
+          <Flex aic sx={{ width: '100%' }}>
             <Typography sx={{ mr: 'auto' }}>{t('title')}</Typography>
             {children}
           </Flex>
