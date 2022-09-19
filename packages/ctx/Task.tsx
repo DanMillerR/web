@@ -8,5 +8,5 @@ export const [useTask, TaskProvider] = genContext<
     value: Task
   }>
 >({
-  provider: valueArg<Task>(),
+  Provider: valueArg<Task>(),
 })
