@@ -1,8 +1,8 @@
 import { AppBar, Toolbar, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { PropsWithChildren } from 'react'
-import { BlockCover } from '../BlockCover'
-import { Flex } from '../Flex'
+import { BlockCover } from './BlockCover'
+import { Flex } from './Flex'
 
 export const Header = ({ children }: PropsWithChildren<EmptyObj>) => {
   const { t } = useTranslation('ui', { keyPrefix: 'header' })
