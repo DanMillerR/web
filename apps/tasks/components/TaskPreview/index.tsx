@@ -47,7 +47,6 @@ export const TaskPreview = () => {
   // const height = mult(fontSize as string, lineHeight as number, 1)
 
   const cardSx = {
-    display: 'flex',
     // height,
     mb: 2,
     ...(bg && { backgroundColor: bg }),
@@ -55,22 +54,24 @@ export const TaskPreview = () => {
 
   return (
     <Card sx={cardSx}>
-      <TaskPreviewImg />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Flex
-          sx={{
-            height: '100%',
-          }}
-          clmn
-        >
-          <CardActionArea sx={{ flexGrow: 1 }}>
-            <TaskPreviewTitle {...{ color }} />
-            <TaskPreviewText {...{ color }} />
-            <TaskPreviewProgress />
-          </CardActionArea>
-          <TaskPreviewButtons />
-        </Flex>
-      </CardContent>
+      <Flex>
+        <TaskPreviewImg />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Flex
+            sx={{
+              height: '100%',
+            }}
+            clmn
+          >
+            <CardActionArea sx={{ flexGrow: 1 }}>
+              <TaskPreviewTitle {...{ color }} />
+              <TaskPreviewText {...{ color }} />
+            </CardActionArea>
+            <TaskPreviewButtons />
+          </Flex>
+        </CardContent>
+      </Flex>
+      <TaskPreviewProgress />
     </Card>
   )
 }
