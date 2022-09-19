@@ -31,7 +31,15 @@ export const Save = ({ originalTask }: { originalTask: Task }) => {
   const handleSave = () => {
     loading()
 
-    updateDoc(USER_REF(uid), TASKS_PROPERTY + data.id, data)
+    const updatedData: PartialRecursively<Task> = {
+      ...data,
+      timestamps: {
+        ...data.timestamps,
+        update: new Date().toISOString(),
+      },
+    }
+
+    updateDoc(USER_REF(uid), TASKS_PROPERTY + data.id, updatedData)
       .then(() => success('(T) SAVED'))
       .catch(error)
   }
