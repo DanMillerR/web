@@ -19,7 +19,8 @@ type Buttons = {
   symbol: SvgIconComponent
   labelKey: string
   color: IconButtonProps['color']
-  useOnClick: () => () => void
+  useOnClick?: () => () => void
+  link?: true
 }[]
 
 export const textVariant: Variant = 'body1'
@@ -82,15 +83,6 @@ export const buttons: Buttons = [
     symbol: Settings,
     labelKey: 'settings',
     color: 'info',
-    // todo?: make it "a" tag
-    useOnClick: () => {
-      const { error } = useLoadings()
-      const { replace } = useRouter()
-      const pathname = useTaskDetailsPathname()
-
-      return () => {
-        replace(pathname).catch(error) //todo
-      }
-    },
+    link: true,
   },
 ]
