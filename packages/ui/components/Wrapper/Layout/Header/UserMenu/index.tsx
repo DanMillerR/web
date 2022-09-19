@@ -16,7 +16,7 @@ export const UserMenu = () => {
 
   return (
     <>
-      <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+      <IconButton onClick={handleClick}>
         <Avatar sx={{ width: 32, height: 32 }} src={useAvatarUrl(uid)}>
           {name}
         </Avatar>
