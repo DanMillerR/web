@@ -3,7 +3,7 @@ import { useTaskData } from 'ctx'
 import { Flex } from 'ui'
 
 export const TaskDetailsProgress = () => {
-  const [{ progress }, control] = useTaskData()
+  const [{ progress }, , control] = useTaskData()
 
   return (
     <Flex>

@@ -14,12 +14,11 @@ export const WithEmail = ({
   index: number
 }) => {
   const { t } = useTranslation('sign-in', { keyPrefix: 'withEmail' })
-  const [{ email, password, name }, control] = useData(
-    null,
-    'email',
-    'password',
-    'name'
-  )
+  const [{ email, password, name }, , control] = useData({
+    email: '',
+    password: '',
+    name: '',
+  })
   const { loading, cancelLoading, error, success } = useLoadings()
   const [signInFailed, setSignedInFailed] = useState(false)
 
