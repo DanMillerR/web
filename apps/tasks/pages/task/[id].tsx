@@ -50,7 +50,6 @@ const TaskDetails = () => {
       icon={<CircularProgress size="inherit" />}
       ns={TASKS_DETAILS}
       tKey="loading"
-      header
     />
   )
 }
