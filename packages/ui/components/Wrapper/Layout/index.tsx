@@ -17,6 +17,7 @@ export const Layout = ({
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
+      whiteSpace: 'pre-wrap',
     }}
   >
     <Header />
