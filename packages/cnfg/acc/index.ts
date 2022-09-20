@@ -2,7 +2,7 @@ import { WithEmail } from './components/WithEmail'
 
 export const signInVariants = [
   {
-    labelKey: 'withEmail.label',
+    labelKey: 'with-email.label',
     index: 0,
     Component: WithEmail,
   },

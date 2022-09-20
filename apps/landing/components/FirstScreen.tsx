@@ -15,7 +15,7 @@ export const FirstScreen = () => {
       }}
     >
       <Typography color="#fff" variant="h1">
-        {t('mainTitle')}
+        {t('main-title')}
       </Typography>
     </BlockCover>
   )

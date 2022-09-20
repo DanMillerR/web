@@ -16,7 +16,7 @@ export const Products = () => {
   return (
     <BlockCover sx={{ p: 1 }}>
       <Typography textAlign="center" variant="h3">
-        {t('productsTitle')}
+        {t('products-title')}
       </Typography>
       <Grid container spacing={2}>
         {Object.values(products).map((product) => (

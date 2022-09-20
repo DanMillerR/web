@@ -30,7 +30,7 @@ export const InSocials = () => {
   return (
     <>
       <Typography textAlign="center" variant="h5">
-        {t('inSocials')}
+        {t('in-socials')}
       </Typography>
       <Grid spacing={1} justifyContent="center" container>
         {socials.map((props) => (

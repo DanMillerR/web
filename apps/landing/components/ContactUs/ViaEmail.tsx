@@ -23,7 +23,7 @@ const EmailPresent = ({
 
 export const ViaEmail = () => {
   const { t } = useTranslation(LANDING, {
-    keyPrefix: LANDING_CONTACT_US + '.viaEmail',
+    keyPrefix: LANDING_CONTACT_US + '.via-email',
   })
 
   return (

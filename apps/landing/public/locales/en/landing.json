@@ -1,12 +1,12 @@
 {
-  "mainTitle": "$t(common:name) — your space, your ecosystem",
-  "productsTitle": "Our products",
+  "main-title": "$t(common:name) — your space, your ecosystem",
+  "products-t itle": "Our products",
   "products": {
     "landing": {
       "title": "Landing",
       "description": "This website. Shows all our products"
     },
-    "accSys": {
+    "acc-sys": {
       "title": "Accounts System",
       "description": "Websites (and system), that is used to manage your accounts and accounts preferences"
     }
@@ -14,7 +14,7 @@
   "contactUs": {
     "title": "Contact us",
     "inSocials": "In socials",
-    "viaEmail": {
+    "via-email": {
       "title": "Via email",
       "help": "Help",
       "partnership": "Partnership",

@@ -1,0 +1,13 @@
+{
+  "with-email": {
+    "label": "С почтой",
+    "signed-up": "Вы зарегистрировались!",
+    "signed-in": "Вы вошли!",
+    "email": "Почта",
+    "password": "Пароль",
+    "name": "Имя",
+    "submit": "Подтвердить"
+  },
+  "signed-out": "Вы вышли!",
+  "signed-out-sign-in-required": "$t(signed-out) Если вы вернётесь на другую страницу, вы снова войдёте"
+}

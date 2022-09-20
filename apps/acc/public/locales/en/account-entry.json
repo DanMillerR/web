@@ -1,0 +1,13 @@
+{
+  "with-email": {
+    "label": "With email",
+    "signed-up": "Signed up!",
+    "signed-in": "Signed in!",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "submit": "Submit"
+  },
+  "signed-out": "Signed out!",
+  "signed-out-sign-in-required": "$t(signed-out) If you will go back, you will be signed in"
+}

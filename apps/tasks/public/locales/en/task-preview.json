@@ -1,0 +1,8 @@
+{
+  "buttons": {
+    "done": "Done",
+    "fail": "Fail",
+    "skip": "Skip",
+    "details": "Details"
+  }
+}
