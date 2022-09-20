@@ -11,7 +11,9 @@ export const Footer = () => {
     <AppBar position="relative">
       <BlockCover>
         <Toolbar>
-          <Typography textAlign="center">{t('text')}</Typography>
+          <Typography sx={{ width: '100%' }} textAlign="center">
+            {t('text')}
+          </Typography>
         </Toolbar>
       </BlockCover>
     </AppBar>
