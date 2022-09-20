@@ -8,6 +8,8 @@ import { TASKS_PROPERTY } from 'cnfg/paths'
 import { useLoadings } from 'loadings'
 import { useTheme } from '@mui/material'
 import { Task } from 'types'
+import { useTranslation } from 'next-i18next'
+import { TASKS_DETAILS } from 'cnfg/namespaces'
 
 const compare = (obj1: AnyObj, obj2: AnyObj): boolean => {
   const v1 = Object.values(obj1)
@@ -27,6 +29,7 @@ export const Save = ({ originalTask }: { originalTask: Task }) => {
   const [{ uid }] = useUser()
   const [data] = useTaskData()
   const theme = useTheme()
+  const { t } = useTranslation(TASKS_DETAILS)
 
   const handleSave = () => {
     loading()
@@ -40,7 +43,7 @@ export const Save = ({ originalTask }: { originalTask: Task }) => {
     }
 
     updateDoc(USER_REF(uid), TASKS_PROPERTY + data.id, updatedData)
-      .then(() => success('(T) SAVED'))
+      .then(() => success(t('saved')))
       .catch(error)
   }
 

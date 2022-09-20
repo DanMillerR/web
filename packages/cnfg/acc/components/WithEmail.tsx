@@ -5,6 +5,8 @@ import { useTranslation } from 'next-i18next'
 import { useState, SyntheticEvent } from 'react'
 import { useLoadings } from 'loadings'
 import { signIn, signUp } from 'acc'
+import { ACCOUNT_ENTRY } from '../../namespaces'
+import { ACCOUNT_ENTRY_WITH_EMAIL } from '../../keyPreffixes'
 
 export const WithEmail = ({
   value,
@@ -13,7 +15,9 @@ export const WithEmail = ({
   value: number
   index: number
 }) => {
-  const { t } = useTranslation('sign-in', { keyPrefix: 'withEmail' })
+  const { t } = useTranslation(ACCOUNT_ENTRY, {
+    keyPrefix: ACCOUNT_ENTRY_WITH_EMAIL,
+  })
   const [{ email, password, name }, , control] = useData({
     email: '',
     password: '',
@@ -34,14 +38,14 @@ export const WithEmail = ({
           name,
           tasks: {},
         },
-        () => success('(T) SIGNED UP'),
+        () => success(t('signed-up')),
         error
       )
     else
       signIn(
         email,
         password,
-        () => success('(T) SIGNED IN'),
+        () => success(t('signed-in')),
         (err) => {
           if (err.code == 'auth/user-not-found') {
             cancelLoading()

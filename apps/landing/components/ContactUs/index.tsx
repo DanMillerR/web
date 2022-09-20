@@ -3,9 +3,11 @@ import { useTranslation } from 'next-i18next'
 import { InSocials } from './InSocials'
 import { ViaEmail } from './ViaEmail'
 import { BlockCover } from 'ui'
+import { LANDING } from 'cnfg/namespaces'
+import { LANDING_CONTACT_US } from 'cnfg/keyPreffixes'
 
 export const ContactUs = () => {
-  const { t } = useTranslation('landing', { keyPrefix: 'contactUs' })
+  const { t } = useTranslation(LANDING, { keyPrefix: LANDING_CONTACT_US })
   const { palette } = useTheme()
 
   return (

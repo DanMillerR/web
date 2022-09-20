@@ -5,6 +5,7 @@ import { SyntheticEvent, useState } from 'react'
 import { Tabs, Tab } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { signInVariants } from 'cnfg/acc'
+import { ACCOUNT_ENTRY } from 'cnfg/namespaces'
 
 const Variants = ({
   value,
@@ -13,7 +14,7 @@ const Variants = ({
   value: number
   onChange: (ev: SyntheticEvent, newValue: number) => void
 }) => {
-  const { t } = useTranslation('sign-in')
+  const { t } = useTranslation(ACCOUNT_ENTRY)
 
   return (
     <>

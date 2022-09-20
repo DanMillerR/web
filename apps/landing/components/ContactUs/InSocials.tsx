@@ -2,6 +2,8 @@ import { Button, Grid, Typography } from '@mui/material'
 import { SocialNetworkProps, socials } from 'cnfg'
 import { useTranslation } from 'next-i18next'
 import { Link } from 'ui'
+import { LANDING } from 'cnfg/namespaces'
+import { LANDING_CONTACT_US } from 'cnfg/keyPreffixes'
 
 const SocialNetworkLink = ({ text, href, Icon }: SocialNetworkProps) => (
   <Grid item>
@@ -23,7 +25,7 @@ const SocialNetworkLink = ({ text, href, Icon }: SocialNetworkProps) => (
 )
 
 export const InSocials = () => {
-  const { t } = useTranslation('landing', { keyPrefix: 'contactUs' })
+  const { t } = useTranslation(LANDING, { keyPrefix: LANDING_CONTACT_US })
 
   return (
     <>

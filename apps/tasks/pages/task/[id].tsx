@@ -16,8 +16,11 @@ import { Flex } from 'ui'
 import { TaskDataImg } from '../../components/TaskDetails/Img'
 import { Save } from '../../components/Save'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+import { TASKS_DETAILS } from 'cnfg/namespaces'
 
 const TaskDetails = () => {
+  const { t } = useTranslation(TASKS_DETAILS)
   const { query } = useRouter()
   const [{ uid }] = useUser()
   const [task, setTask] = useState<Task>()
@@ -44,7 +47,7 @@ const TaskDetails = () => {
       </Flex>
     </TaskDataProvider>
   ) : (
-    '(T) LOADING'
+    t('loading')
   )
 }
 

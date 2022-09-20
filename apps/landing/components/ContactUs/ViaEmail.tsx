@@ -1,6 +1,8 @@
 import { Box, Typography } from '@mui/material'
 import { emails } from 'cnfg'
 import { useTranslation } from 'next-i18next'
+import { LANDING } from 'cnfg/namespaces'
+import { LANDING_CONTACT_US } from 'cnfg/keyPreffixes'
 
 const EmailPresent = ({
   category,
@@ -20,7 +22,9 @@ const EmailPresent = ({
 )
 
 export const ViaEmail = () => {
-  const { t } = useTranslation('landing', { keyPrefix: 'contactUs.viaEmail' })
+  const { t } = useTranslation(LANDING, {
+    keyPrefix: LANDING_CONTACT_US + '.viaEmail',
+  })
 
   return (
     <>

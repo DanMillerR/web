@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from 'fb'
 import { useLoadings } from 'loadings'
+import { useTranslation } from 'next-i18next'
+import { ACCOUNT_ENTRY } from 'cnfg/namespaces'
 
 const SignOut = () => {
+  const { t } = useTranslation(ACCOUNT_ENTRY)
   const { error } = useLoadings()
   const [signedOut, setSignedOut] = useState(false)
 
@@ -14,13 +17,7 @@ const SignOut = () => {
       .catch(error)
   }, [])
 
-  return (
-    <>
-      {signedOut
-        ? '(T) SIGNING OUT'
-        : '(T) SIGNED OUT. IF YOU WILL GO BACK, YOU WILL LOGGED IN'}
-    </>
-  )
+  return <>{signedOut ? t('signed-out') : t('signed-out-sign-in-required')}</>
 }
 
 export default SignOut

@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { BlockCover } from 'ui'
+import { LANDING } from 'cnfg/namespaces'
 
 export const FirstScreen = () => {
-  const { t } = useTranslation('landing')
+  const { t } = useTranslation(LANDING)
 
   return (
     <BlockCover

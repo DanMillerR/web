@@ -4,9 +4,13 @@ import { Flex } from 'ui'
 import { TaskPreviewButton } from './Button'
 import { TASK_NORMAL_STATE } from 'cnfg/tasks'
 import { useTask } from 'ctx'
+import { TASK_PREVIEW } from 'cnfg/namespaces'
+import { TASK_PREVIEW_BUTTONS } from 'cnfg/keyPreffixes'
 
 export const TaskPreviewButtons = () => {
-  const { t } = useTranslation('task-previews', { keyPrefix: 'buttons' })
+  const { t } = useTranslation(TASK_PREVIEW, {
+    keyPrefix: TASK_PREVIEW_BUTTONS,
+  })
 
   return (
     <Flex

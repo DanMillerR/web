@@ -1,9 +1,10 @@
 import { Card, Grid, Typography } from '@mui/material'
+import { LANDING } from 'cnfg/namespaces'
 import { useTranslation } from 'next-i18next'
 import { BlockCover } from 'ui'
 
 export const Products = () => {
-  const { t } = useTranslation('landing')
+  const { t } = useTranslation(LANDING)
 
   const products: {
     [K in string]: {
