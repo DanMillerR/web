@@ -1,5 +1,5 @@
 import { Variant } from '@mui/material/styles/createTypography'
-import { SvgIconComponent, Close, Done, Settings } from '@mui/icons-material'
+import { SvgIconComponent, Close, Done, MoreHoriz } from '@mui/icons-material'
 import { updateDoc, doc } from 'firebase/firestore'
 import { db } from 'fb'
 import { useUser } from 'acc'
@@ -78,8 +78,8 @@ export const buttons: Buttons = [
     },
   },
   {
-    symbol: Settings,
-    labelKey: 'settings',
+    symbol: MoreHoriz,
+    labelKey: 'details',
     color: 'info',
     link: true,
   },
