@@ -4,18 +4,19 @@ import { ReactNode } from 'react'
 import { Flex } from './Flex'
 import { Header } from './Header'
 
+type PropsBase = {
+  tKey?: string
+  icon?: ReactNode
+}
+
 const LoadingScreenBase = ({
-  ns,
   tKey,
   icon,
   height,
-}: {
-  ns?: string
-  tKey?: string
-  icon?: ReactNode
+}: PropsBase & {
   height?: true
 }) => {
-  const { t } = useTranslation(ns)
+  const { t } = useTranslation('user-load-state')
 
   return (
     <Flex
@@ -39,10 +40,7 @@ const LoadingScreenBase = ({
 export const LoadingScreen = ({
   header,
   ...props
-}: {
-  ns?: string
-  tKey?: string
-  icon?: ReactNode
+}: PropsBase & {
   header?: true
 }) =>
   header ? (
