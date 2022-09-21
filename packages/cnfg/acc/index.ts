@@ -8,4 +8,7 @@ export const signInVariants = [
   },
 ]
 
-export const url = 'http://localhost:3001/?message=acc-required'
+export const url =
+  process.env.NODE_ENV == 'development'
+    ? 'https://localhost:3000/?message=acc-required'
+    : 'https://accounts-tan.vercel.app/?message=acc-required'
