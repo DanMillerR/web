@@ -15,7 +15,7 @@ export const UserLoadState = ({ children }: PropsWithChildren<EmptyObj>) => {
       return <UserLoadLoading />
     case 'ERROR':
       return <UserLoadError />
-    case 'INFO':
+    case 'INFO': //todo
       return <>INFO</>
     case 'VERIFICATION':
       return <UserLoadVerification />
