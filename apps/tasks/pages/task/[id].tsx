@@ -46,11 +46,7 @@ const TaskDetails = () => {
       </Flex>
     </TaskDataProvider>
   ) : (
-    <LoadingScreen
-      icon={<CircularProgress size="inherit" />}
-      ns={TASKS_DETAILS}
-      tKey="loading"
-    />
+    <LoadingScreen icon={<CircularProgress size="0.8em" />} tKey="loading" />
   )
 }
 

@@ -5,7 +5,7 @@ import { LoadingScreen } from '../../../LoadingScreen'
 export const UserLoadLoading = () => (
   <LoadingScreen
     header
-    icon={<CircularProgress size="inherit" />}
+    icon={<CircularProgress size="0.8em" />}
     tKey="loading"
   />
 )
