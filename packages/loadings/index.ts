@@ -2,7 +2,7 @@ import { LOADINGS } from 'cnfg/namespaces'
 import { useTranslation } from 'next-i18next'
 import { SnackbarKey, useSnackbar } from 'notistack'
 
-export const useLoadings = (alert?: boolean) => {
+export const useLoadings = (alert = true) => {
   const { t } = useTranslation(LOADINGS)
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 

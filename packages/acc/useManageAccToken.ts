@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { useUser } from './useUser'
 // TODO: CATCH
 const useGetToken = () => {
-  const { loading, error } = useLoadings(true)
+  const { loading, error } = useLoadings(false)
   const { replace } = useRouter()
   const [user, userData] = useUser()
 
@@ -33,7 +33,7 @@ const useGetToken = () => {
           replace(returnUrl).catch(error)
         })
         // todo
-        .catch((err) => error(err))
+        .catch((err: Error) => error(err))
     }
   }
 }
