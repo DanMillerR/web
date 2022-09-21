@@ -18,7 +18,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "7.28.0",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "1.4.7"
   },
   "engines": {
     "npm": ">=7.0.0",
