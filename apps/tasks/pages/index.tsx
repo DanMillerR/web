@@ -4,6 +4,7 @@ import { TaskPreview } from '../components/TaskPreview'
 import { Task } from 'types'
 import { Add } from '../components/Add'
 import { TaskProvider } from 'ctx'
+import { LOADINGS, TASK_PREVIEW, UI } from 'cnfg/namespaces'
 
 const Index = () => {
   const [, { tasks }] = useUser({
@@ -28,5 +29,5 @@ const Index = () => {
 
 export default Index
 export const getStaticProps = async () => ({
-  props: await serverSideTranslations('en'),
+  props: await serverSideTranslations('en', [LOADINGS, TASK_PREVIEW, UI]),
 })

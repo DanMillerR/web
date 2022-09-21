@@ -16,7 +16,7 @@ import { Flex, LoadingScreen } from 'ui'
 import { TaskDataImg } from '../../components/TaskDetails/Img'
 import { Save } from '../../components/Save'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { TASKS_DETAILS } from 'cnfg/namespaces'
+import { LOADINGS, TASKS_DETAILS, UI } from 'cnfg/namespaces'
 import { CircularProgress } from '@mui/material'
 
 const TaskDetails = () => {
@@ -56,7 +56,7 @@ const TaskDetails = () => {
 
 export default TaskDetails
 export const getStaticProps = async () => ({
-  props: await serverSideTranslations('en'),
+  props: await serverSideTranslations('en', [LOADINGS, TASKS_DETAILS, UI]),
 })
 export const getStaticPaths = () => ({
   paths: [],
