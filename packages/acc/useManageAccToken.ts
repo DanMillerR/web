@@ -32,7 +32,8 @@ const useGetToken = () => {
           returnUrl.searchParams.set('acc-token', token)
           replace(returnUrl).catch(error)
         })
-        .catch(error)
+        // todo
+        .catch((err) => error(err, true))
     }
   }
 }

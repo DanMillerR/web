@@ -22,10 +22,10 @@ export const useLoadings = () => {
       cancelLoading()
       enqueueSnackbar(msg, { variant: 'success' })
     },
-    error: (err: Error, msg?: string) => {
+    error: (err: Error, noAlert: boolean = true, msg?: string) => {
       cancelLoading()
       console.info(err)
-      enqueueSnackbar(msg || err.message, { variant: 'error' })
+      !noAlert && enqueueSnackbar(msg || err.message, { variant: 'error' })
     },
   }
 }
