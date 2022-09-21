@@ -24,6 +24,7 @@ export const useLoadings = () => {
     },
     error: (err: Error, msg?: string) => {
       cancelLoading()
+      console.info(err)
       enqueueSnackbar(msg || err.message, { variant: 'error' })
     },
   }
