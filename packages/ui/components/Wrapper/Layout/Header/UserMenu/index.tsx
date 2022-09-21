@@ -3,6 +3,7 @@ import { Avatar, Menu, MenuItem, ListItemIcon, IconButton } from '@mui/material'
 import { Logout } from '@mui/icons-material'
 import { useUser } from 'acc'
 import { useAvatarUrl } from 'cnfg/paths'
+import { useSignOut } from 'acc/handlers/signOut'
 
 export const UserMenu = () => {
   const [{ uid }, { name }] = useUser()
@@ -56,7 +57,7 @@ export const UserMenu = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
+        <MenuItem onClick={useSignOut()}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
