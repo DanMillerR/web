@@ -37,10 +37,8 @@ const LoadingScreenBase = ({
 }
 
 export const LoadingScreen = ({
-  ns,
-  tKey,
-  icon,
   header,
+  ...props
 }: {
   ns?: string
   tKey?: string
@@ -55,8 +53,8 @@ export const LoadingScreen = ({
       clmn
     >
       <Header />
-      <LoadingScreenBase />
+      <LoadingScreenBase {...props} />
     </Flex>
   ) : (
-    <LoadingScreenBase height />
+    <LoadingScreenBase {...props} height />
   )
