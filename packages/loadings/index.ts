@@ -2,7 +2,7 @@ import { LOADINGS } from 'cnfg/namespaces'
 import { useTranslation } from 'next-i18next'
 import { SnackbarKey, useSnackbar } from 'notistack'
 
-export const useLoadings = () => {
+export const useLoadings = (alert?: boolean) => {
   const { t } = useTranslation(LOADINGS)
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
@@ -13,19 +13,20 @@ export const useLoadings = () => {
   return {
     cancelLoading,
     loading: () => {
-      key = enqueueSnackbar(t('loading'), {
-        persist: true,
-        variant: 'info',
-      })
+      alert &&
+        (key = enqueueSnackbar(t('loading'), {
+          persist: true,
+          variant: 'info',
+        }))
     },
     success: (msg: string) => {
       cancelLoading()
-      enqueueSnackbar(msg, { variant: 'success' })
+      alert && enqueueSnackbar(msg, { variant: 'success' })
     },
-    error: (err: Error, noAlert: boolean = true, msg?: string) => {
+    error: (err: Error, msg?: string) => {
       cancelLoading()
       console.info(err)
-      !noAlert && enqueueSnackbar(msg || err.message, { variant: 'error' })
+      alert && enqueueSnackbar(msg || err.message, { variant: 'error' })
     },
   }
 }
