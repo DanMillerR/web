@@ -19,12 +19,12 @@ export const useUserLoad = () => {
     // "account required" protection
     const isSignOutPage = location.pathname == '/sign-out'
     const isToken = new URL(location.href).searchParams.get('acc-token')
-    const isNoUser = !loading && !error && !user.uid
+    const isNoUser = !loading && !error && !user
 
     if (!isSignOutPage && !isToken && signInRequired && isNoUser)
       return goToAcc()
 
-    if (user.uid) {
+    if (user) {
       // "email verification required" protection
       if (emailVerificationRequired && !user.emailVerified)
         return setState('VER')
