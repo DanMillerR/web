@@ -4,7 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { UserData } from './types'
 import { User as FbUser } from 'firebase/auth'
-import assign from 'object-assign-deep'
 import { genContext } from 'gen-context'
 
 // todo?????: every unexisting property of user and userData is any
