@@ -7,16 +7,12 @@ import { TaskProvider } from 'ctx'
 import { LOADINGS, TASK_PREVIEW, UI } from 'cnfg/namespaces'
 
 const Index = () => {
-  const [, { tasks }] = useUser({
-    data: {
-      tasks: {},
-    },
-  })
+  const [, { tasks }] = useUser()
 
   return (
     <>
       <Add />
-      {Object.values(tasks as Record<string, Task>)
+      {Object.values((tasks || {}) as Record<string, Task>)
         .sort((a, b) => a.state - b.state)
         .map((taskProps) => (
           <TaskProvider value={taskProps} key={taskProps.id}>
