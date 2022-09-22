@@ -3,19 +3,25 @@ import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { UserData } from './types'
-import { User } from 'firebase/auth'
+import { User as FbUser } from 'firebase/auth'
 import assign from 'object-assign-deep'
 
 // todo?????: every unexisting property of user and userData is any
 // return user's data
-export const useUser = (
+
+type User = InterfaceToType<FbUser>
+
+type RU<U> = U extends never ? User : { defaultValue?: true } & User
+type RD<D> = D extends never ? UserData : { defaultValue?: true } & UserData
+
+export const useUser = <U extends never | User, D extends never | UserData>(
   defaultValue?: PartialRecursively<{
-    user: InterfaceToType<User>
-    data: UserData
+    user: U
+    data: D
   }>
 ): [
-  { defaultValue?: true } & User,
-  { defaultValue?: true } & UserData,
+  RU<U>,
+  RD<D>,
   { loading: boolean; error: Error | undefined },
   { dLoading: boolean; dError: Error | null }
 ] => {
@@ -48,10 +54,11 @@ export const useUser = (
 
   return [
     // todo????: no assign, cuz "too many recursions"
-    user || {
-      defaultValue: true,
-      ...(defaultValue?.user as User),
-    },
+    user ||
+      ((defaultValue && {
+        defaultValue: true,
+        ...(defaultValue?.user as User),
+      }) as RU<U>),
     assign({}, defaultValue?.data, data) || {
       defaultValue: true,
       ...(defaultValue?.data as UserData),
