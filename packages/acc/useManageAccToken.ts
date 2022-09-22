@@ -66,7 +66,7 @@ export const useManageAccToken = () => {
   const [user, userData] = useUser()
 
   useEffect(() => {
-    if (location.origin === new URL(url).origin) getToken()
+    if (location.origin.startsWith(new URL(url).origin)) getToken()
     else signInWithToken()
   }, [user, userData])
 }
