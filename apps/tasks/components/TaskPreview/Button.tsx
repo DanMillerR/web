@@ -5,6 +5,8 @@ import { useTask } from 'ctx'
 import { LinkToTask } from './LinkToTask'
 import { IfHook } from 'utils'
 
+type UseOnClick = () => () => void
+
 export const TaskPreviewButton = ({
   symbol: Symbol,
   label,
@@ -15,28 +17,28 @@ export const TaskPreviewButton = ({
   symbol: ComponentType
   label: string
   color: IconButtonProps['color']
-  useOnClick?: () => () => void
+  useOnClick?: UseOnClick
   link?: true
 }) => {
   const Wrapper = link ? LinkToTask : Fragment
 
-  const iconColor = useTask().state == TASK_NORMAL_STATE ? color : 'inherit'
-
   return (
-    <Wrapper>
-      <IfHook
-        prop="onClick"
-        cond={!!useOnClick}
-        hook={useOnClick as () => unknown}
-        Comp={({ onClick }) => (
-          <IconButton
-            title={label}
-            onClick={onClick as () => void}
-            color={iconColor}
-          />
-        )}
-      />
-      <Symbol />
-    </Wrapper>
+    <IfHook<'onClick', UseOnClick>
+      prop="onClick"
+      cond={!!useOnClick}
+      hook={useOnClick as UseOnClick}
+      Comp={({ onClick }) => {
+        const iconColor =
+          useTask().state == TASK_NORMAL_STATE ? color : 'inherit'
+
+        return (
+          <Wrapper>
+            <IconButton title={label} onClick={onClick} color={iconColor}>
+              <Symbol />
+            </IconButton>
+          </Wrapper>
+        )
+      }}
+    />
   )
 }
