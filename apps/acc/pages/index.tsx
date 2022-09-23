@@ -5,7 +5,7 @@ import { SyntheticEvent, useState } from 'react'
 import { Tabs, Tab } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import { signInVariants } from 'cnfg/acc'
-import { ACCOUNT_ENTRY, LOADINGS, UI } from 'cnfg/namespaces'
+import { ACCOUNT_ENTRY, LOADINGS, UI, USER_LOAD_STATE } from 'cnfg/namespaces'
 
 const Variants = ({
   value,
@@ -51,5 +51,10 @@ const Index = () => {
 
 export default Index
 export const getStaticProps = async () => ({
-  props: await serverSideTranslations('en', [ACCOUNT_ENTRY, LOADINGS, UI]),
+  props: await serverSideTranslations('en', [
+    USER_LOAD_STATE,
+    ACCOUNT_ENTRY,
+    LOADINGS,
+    UI,
+  ]),
 })

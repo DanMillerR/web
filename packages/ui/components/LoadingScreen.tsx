@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material'
+import { USER_LOAD_STATE } from 'cnfg/namespaces'
 import { useTranslation } from 'next-i18next'
 import { ReactNode } from 'react'
 import { Flex } from './Flex'
@@ -16,7 +17,7 @@ const LoadingScreenBase = ({
 }: PropsBase & {
   height?: true
 }) => {
-  const { t } = useTranslation('user-load-state')
+  const { t } = useTranslation(USER_LOAD_STATE)
 
   return (
     <Flex

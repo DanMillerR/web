@@ -3,4 +3,5 @@ export const ACCOUNT_ENTRY = 'account-entry',
   TASKS_DETAILS = 'tasks-details',
   UI = 'ui',
   LOADINGS = 'loadings',
-  TASK_PREVIEW = 'task-preview'
+  TASK_PREVIEW = 'task-preview',
+  USER_LOAD_STATE = 'user-load-state'
