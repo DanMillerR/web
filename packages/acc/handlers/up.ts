@@ -7,7 +7,7 @@ export const signUp = (
   data: UserData,
   successFn: () => void,
   catchFn: (err: Error) => void
-) => {
+) =>
   createUserWithEmailAndPassword(auth, data.email, data.password)
     .then(async ({ user }) => {
       await setDoc(doc(db, 'users/' + user.uid), data).catch(catchFn)
@@ -17,4 +17,3 @@ export const signUp = (
         .catch(catchFn)
     })
     .catch(catchFn)
-}
