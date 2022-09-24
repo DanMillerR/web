@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build"
+    "build": "next build",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -27,6 +28,8 @@
     "@types/react": "18.0.9",
     "@types/uuid": "^8.3.4",
     "next-transpile-modules": "9.0.0",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.3",
+    "ts-global-types": "*",
+    "tsconfig": "*"
   }
 }

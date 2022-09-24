@@ -4,19 +4,17 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "configs/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "yarn run eslint --ext .ts,.tsx .",
+    "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md,yaml,json,js}\""
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.27.0",
-    "eslint-config-next": "^12.0.8",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-react": "7.28.0",
+    "eslint-config-base": "*",
     "prettier": "latest",
     "turbo": "1.4.7"
   },

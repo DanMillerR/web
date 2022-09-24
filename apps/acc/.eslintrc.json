@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "parserOptions": {
+    "tsconfigRootDir": ".",
+    "project": ["tsconfig.json"]
+  },
+  "extends": ["base"]
+}
