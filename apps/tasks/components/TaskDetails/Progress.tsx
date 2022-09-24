@@ -13,7 +13,7 @@ export const TaskDetailsProgress = () => {
 
   return (
     <Flex>
-      <CircularProgress variant="determinate" value={+progress} />
+      <CircularProgress variant="determinate" value={progress} />
       <TextField label={t('progress')} {...control('progress')} />
     </Flex>
   )
