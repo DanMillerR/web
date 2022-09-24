@@ -1,5 +1,4 @@
-import { CardActionArea, CardContent } from '@mui/material'
-import { Card } from '@mui/material'
+import { Card, CardActionArea, CardContent } from '@mui/material'
 import { Flex } from 'ui'
 import { TaskPreviewImg } from './Img'
 import { TaskPreviewProgress } from './Progress'
