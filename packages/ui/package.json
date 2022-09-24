@@ -4,6 +4,9 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
+  "dependencies": {
+    "nextjs-progressbar": "^0.0.14"
+  },
   "devDependencies": {
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
