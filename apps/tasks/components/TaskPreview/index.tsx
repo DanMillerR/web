@@ -19,26 +19,27 @@ export const TaskPreview = () => {
     ...(bg && { backgroundColor: bg }),
   }
 
+  // todo: link
   return (
     <Card sx={cardSx}>
       <Flex>
         <TaskPreviewImg />
-        <Link href={useTaskDetailsPathname()}>
-          <CardContent sx={{ flexGrow: 1 }}>
-            <Flex
-              sx={{
-                height: '100%',
-              }}
-              clmn
-            >
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Flex
+            sx={{
+              height: '100%',
+            }}
+            clmn
+          >
+            <Link href={useTaskDetailsPathname()}>
               <CardActionArea sx={{ flexGrow: 1 }}>
                 <TaskPreviewTitle {...{ color }} />
                 <TaskPreviewText {...{ color }} />
               </CardActionArea>
-              <TaskPreviewButtons />
-            </Flex>
-          </CardContent>
-        </Link>
+            </Link>
+            <TaskPreviewButtons />
+          </Flex>
+        </CardContent>
       </Flex>
       <TaskPreviewProgress />
     </Card>
