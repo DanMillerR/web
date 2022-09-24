@@ -20,6 +20,7 @@ export const TaskPreviewButton = ({
   useOnClick?: UseOnClick
   link?: true
 }) => {
+  const iconColor = useTask().state == TASK_NORMAL_STATE ? color : 'inherit'
   const Wrapper = link ? LinkToTask : Fragment
 
   return (
@@ -27,18 +28,13 @@ export const TaskPreviewButton = ({
       prop="onClick"
       cond={!!useOnClick}
       hook={useOnClick as UseOnClick}
-      Comp={({ onClick }) => {
-        const iconColor =
-          useTask().state == TASK_NORMAL_STATE ? color : 'inherit'
-
-        return (
-          <Wrapper>
-            <IconButton title={label} onClick={onClick} color={iconColor}>
-              <Symbol />
-            </IconButton>
-          </Wrapper>
-        )
-      }}
+      Comp={({ onClick }) => (
+        <Wrapper>
+          <IconButton title={label} onClick={onClick} color={iconColor}>
+            <Symbol />
+          </IconButton>
+        </Wrapper>
+      )}
     />
   )
 }
