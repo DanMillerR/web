@@ -67,5 +67,6 @@ export const getStaticProps = async () => {
   }
 }
 export const getStaticPaths = () => ({
+  paths: [{ params: { id: '' } }],
   fallback: true,
 })
