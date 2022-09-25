@@ -1,6 +1,5 @@
-import { SvgIconComponent } from '@mui/icons-material'
+import { Reddit, SvgIconComponent } from '@mui/icons-material'
 import { VK, Telegram } from 'ui/icons'
-import { Reddit } from '@mui/icons-material'
 import { SvgIcon } from '@mui/material'
 
 export type SocialNetworkProps = {

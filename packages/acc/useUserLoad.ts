@@ -39,8 +39,8 @@ export const useUserLoad = () => {
           if (!(p in userData)) return setState('INFO')
     }
 
-    // if all tests are passed, reset, if not reseted
-    state && setState('')
+    // if all tests are passed and not reseted, reset
+    if (state) setState('')
   }, [user, loading, error, userData, dError, dLoading])
 
   return state

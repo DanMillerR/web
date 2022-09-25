@@ -13,20 +13,20 @@ export const useLoadings = (alert = true) => {
   return {
     cancelLoading,
     loading: () => {
-      alert &&
-        (key = enqueueSnackbar(t('loading'), {
+      if (alert)
+        key = enqueueSnackbar(t('loading'), {
           persist: true,
           variant: 'info',
-        }))
+        })
     },
     success: (msg: string) => {
       cancelLoading()
-      alert && enqueueSnackbar(msg, { variant: 'success' })
+      if (alert) enqueueSnackbar(msg, { variant: 'success' })
     },
     error: (err: Error, msg?: string) => {
       cancelLoading()
       console.info(err)
-      alert && enqueueSnackbar(msg || err.message, { variant: 'error' })
+      if (alert) enqueueSnackbar(msg || err.message, { variant: 'error' })
     },
   }
 }

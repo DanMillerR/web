@@ -35,7 +35,7 @@ export const [useUser, UserProvider] = genContext<
     })
 
     useEffect(() => {
-      user &&
+      if (user)
         onSnapshot(
           doc(db, 'users/' + user.uid),
           (snap) =>
