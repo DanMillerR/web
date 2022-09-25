@@ -51,7 +51,7 @@ const TaskDetails = () => {
 }
 
 export default TaskDetails
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     return {
       props: await serverSideTranslations('en', [
@@ -66,7 +66,6 @@ export const getServerSideProps = async () => {
     return { props: {} }
   }
 }
-// export const getStaticPaths = () => ({
-//   paths: [],
-//   fallback: 'blocking',
-// })
+export const getStaticPaths = () => ({
+  fallback: true,
+})
