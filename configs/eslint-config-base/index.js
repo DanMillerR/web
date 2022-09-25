@@ -30,6 +30,9 @@ module.exports = {
         project: './tsconfig.json',
       },
       extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'airbnb-typescript',
         'plugin:import/recommended',
@@ -42,6 +45,7 @@ module.exports = {
         'react/prop-types': 'off',
         'react/require-default-props': 'off',
         'import/no-extraneous-dependencies': 0,
+        'import/no-unresolved': 0,
         '@typescript-eslint/no-shadow': 0,
         'import/named': 0,
       },

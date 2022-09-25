@@ -4,6 +4,9 @@
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
+  "scripts": {
+    "lint": "yarn eslint ."
+  },
   "dependencies": {
     "nextjs-progressbar": "^0.0.14"
   },

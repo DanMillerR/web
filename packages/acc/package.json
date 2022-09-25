@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "lint": "yarn eslint ."
+  },
   "dependencies": {
     "axios": "^0.27.2",
-    "react-firebase-hooks": "^5.0.3"
+    "react-firebase-hooks": "^5.0.3",
+    "eslint-config-package": "*"
   },
   "peerDependencies": {
     "cnfg": "*",
