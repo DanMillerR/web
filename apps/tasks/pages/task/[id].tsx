@@ -18,6 +18,7 @@ import { Save } from '../../components/Save'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { LOADINGS, TASKS_DETAILS, UI, USER_LOAD_STATE } from 'cnfg/namespaces'
 import { CircularProgress } from '@mui/material'
+import { GetStaticProps } from 'next'
 
 const TaskDetails = () => {
   const { query } = useRouter()
@@ -51,10 +52,10 @@ const TaskDetails = () => {
 }
 
 export default TaskDetails
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   try {
     return {
-      props: await serverSideTranslations('en', [
+      props: await serverSideTranslations(locale || 'en', [
         USER_LOAD_STATE,
         LOADINGS,
         TASKS_DETAILS,
@@ -67,6 +68,6 @@ export const getStaticProps = async () => {
   }
 }
 export const getStaticPaths = () => ({
-  paths: [{ params: { id: 'any-id' } }],
+  paths: [],
   fallback: true,
 })
