@@ -52,7 +52,7 @@ const TaskDetails = () => {
 }
 
 export default TaskDetails
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetStaticProps = async ({ locale }) => {
   try {
     return {
       props: await serverSideTranslations(locale || 'en', [
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     return { props: {} }
   }
 }
-export const getStaticPaths = () => ({
-  paths: [],
-  fallback: true,
-})
+// export const getStaticPaths = () => ({
+//   paths: [],
+//   fallback: true,
+// })
