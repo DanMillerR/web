@@ -1,11 +1,9 @@
 import { Box, BoxProps, Container, ContainerProps } from '@mui/material'
 import { useLocalConfig } from 'ctx'
 
-export const BlockCover = ({
-  children,
-  containerProps,
-  ...props
-}: BoxProps & { containerProps?: Omit<ContainerProps, 'maxWidth'> }) => {
+export const BlockCover: (
+  p: BoxProps & { containerProps?: Omit<ContainerProps, 'maxWidth'> }
+) => JSX.Element = ({ children, containerProps, ...props }) => {
   const { CONTAINER_MAX_WIDTH } = useLocalConfig()
 
   return (
