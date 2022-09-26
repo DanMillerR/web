@@ -4,7 +4,7 @@ import { auth } from 'fb'
 import { useLoadings } from 'loadings'
 import { useTranslation } from 'next-i18next'
 import { ACCOUNT_ENTRY, UI, USER_LOAD_STATE } from 'cnfg/namespaces'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { translation } from 'translation'
 
 const SignOut = () => {
   const { t } = useTranslation(ACCOUNT_ENTRY)
@@ -22,10 +22,4 @@ const SignOut = () => {
 }
 
 export default SignOut
-export const getStaticProps = async () => ({
-  props: await serverSideTranslations('en', [
-    USER_LOAD_STATE,
-    ACCOUNT_ENTRY,
-    UI,
-  ]),
-})
+export const getStaticProps = translation([USER_LOAD_STATE, ACCOUNT_ENTRY, UI])

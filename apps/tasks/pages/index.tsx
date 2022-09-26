@@ -1,10 +1,10 @@
 import { useUser } from 'acc'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { TaskPreview } from '../components/TaskPreview'
 import { Task } from 'types'
 import { Add } from '../components/Add'
 import { TaskProvider } from 'ctx'
 import { LOADINGS, TASK_PREVIEW, UI, USER_LOAD_STATE } from 'cnfg/namespaces'
+import { translation } from 'translation'
 
 const Index = () => {
   const [, data] = useUser()
@@ -24,11 +24,9 @@ const Index = () => {
 }
 
 export default Index
-export const getStaticProps = async () => ({
-  props: await serverSideTranslations('en', [
-    USER_LOAD_STATE,
-    LOADINGS,
-    TASK_PREVIEW,
-    UI,
-  ]),
-})
+export const getStaticProps = translation([
+  USER_LOAD_STATE,
+  LOADINGS,
+  TASK_PREVIEW,
+  UI,
+])

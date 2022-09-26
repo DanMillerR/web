@@ -14,10 +14,9 @@ import {
 import { Flex, LoadingScreen } from 'ui'
 import { TaskDataImg } from '../components/TaskDetails/Img'
 import { Save } from '../components/Save'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { LOADINGS, TASKS_DETAILS, UI, USER_LOAD_STATE } from 'cnfg/namespaces'
 import { CircularProgress } from '@mui/material'
-import { GetStaticProps } from 'next'
+import { translation } from 'translation'
+import { LOADINGS, TASKS_DETAILS, UI, USER_LOAD_STATE } from 'cnfg/namespaces'
 
 const TaskDetails = () => {
   const [{ uid }] = useUser()
@@ -50,18 +49,9 @@ const TaskDetails = () => {
 }
 
 export default TaskDetails
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  try {
-    return {
-      props: await serverSideTranslations(locale || 'en', [
-        USER_LOAD_STATE,
-        LOADINGS,
-        TASKS_DETAILS,
-        UI,
-      ]),
-    }
-  } catch (error) {
-    console.log(error)
-    return { props: {} }
-  }
-}
+export const getStaticProps = translation([
+  LOADINGS,
+  TASKS_DETAILS,
+  UI,
+  USER_LOAD_STATE,
+])
