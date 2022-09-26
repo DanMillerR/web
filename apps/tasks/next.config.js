@@ -8,6 +8,7 @@ const withTM = require('next-transpile-modules')([
   'form',
   'loadings',
   'fb',
+  'translation',
 ])
 const { i18n } = require('./next-i18next.config')
 
