@@ -4,7 +4,6 @@ import { onSnapshot } from 'firebase/firestore'
 import { USER_REF } from 'fb'
 import { useUser } from 'acc'
 import { UserData } from 'acc/types'
-import { useRouter } from 'next/router'
 import { Task } from 'types'
 import {
   TaskDetailsProgress,
