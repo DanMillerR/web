@@ -11,17 +11,16 @@ import {
   TaskDetailsSubTitle,
   TaskDetailsText,
   TaskDetailsTitle,
-} from '../../components/TaskDetails'
+} from '../components/TaskDetails'
 import { Flex, LoadingScreen } from 'ui'
-import { TaskDataImg } from '../../components/TaskDetails/Img'
-import { Save } from '../../components/Save'
+import { TaskDataImg } from '../components/TaskDetails/Img'
+import { Save } from '../components/Save'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { LOADINGS, TASKS_DETAILS, UI, USER_LOAD_STATE } from 'cnfg/namespaces'
 import { CircularProgress } from '@mui/material'
 import { GetStaticProps } from 'next'
 
 const TaskDetails = () => {
-  const { query } = useRouter()
   const [{ uid }] = useUser()
   const [task, setTask] = useState<Task>()
 
@@ -30,7 +29,7 @@ const TaskDetails = () => {
       onSnapshot(USER_REF(uid), (snap) => {
         const { tasks } = snap.data() as UserData
 
-        setTask(tasks[query.id as string])
+        setTask(tasks[new URL(location.href).searchParams.get('id') as string])
       })
     }
   }, [uid])
@@ -52,7 +51,7 @@ const TaskDetails = () => {
 }
 
 export default TaskDetails
-export const getServerSideProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   try {
     return {
       props: await serverSideTranslations(locale || 'en', [
@@ -67,7 +66,3 @@ export const getServerSideProps: GetStaticProps = async ({ locale }) => {
     return { props: {} }
   }
 }
-// export const getStaticPaths = () => ({
-//   paths: [],
-//   fallback: true,
-// })

@@ -1,1 +1,1 @@
-export const TASK_URL = '/task/' as const
+export const TASK_URL = '/task' as const
